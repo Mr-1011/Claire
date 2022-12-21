@@ -1,5 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Questions from './Components/Questions'
+import Start from './Components/Start'
+import Profile from './Components/Profile'
 
 function App() {
   return (
@@ -7,10 +10,16 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={
-            <h1>start</h1>
+            <Start />
           } />
           <Route path='/question' element={
-            <h1>question</h1>
+            <Questions />
+          } />
+          <Route path='/profile' element={
+            <Profile />
+          } />
+          <Route path='/dashboard' element={
+            <h1>Speedometer</h1>
           } />
         </Routes>
       </Router>
