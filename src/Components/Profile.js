@@ -4,24 +4,23 @@ import '../App.css';
 
 function Profile() {
   return (
-    <div>
-      <div>Profile</div>
+    <div className='outter__div'>
+      <h2>Profile</h2>
 
-
-
-      <div className='next__div'>
-        <Link to='/question' className='back__link'>
+      <footer>
+        <Link to='/question'>
           <button onClick={() => window.scrollTo({ top: 0 })} className='button__next'>
             back
           </button>
         </Link>
 
-        <Link to='/dashboard' className='next__link'>
+        <Link to='/dashboard'>
           <button onClick={() => window.scrollTo({ top: 0 })} className='button__next'>
             next
           </button>
         </Link>
-      </div>
+      </footer>
+
     </div>
   )
 }

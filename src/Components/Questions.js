@@ -4,22 +4,22 @@ import '../App.css';
 
 function Questions() {
   return (
-    <div>
-      <div>Questions</div>
+    <div className='outter__div'>
+      <h2>Questions</h2>
 
-      <div className='next__div'>
-        <Link to='/' className='back__link'>
+      <footer>
+        <Link to='/'>
           <button onClick={() => window.scrollTo({ top: 0 })} className='button__next'>
             back
           </button>
         </Link>
 
-        <Link to='/profile' className='next__link'>
+        <Link to='/profile'>
           <button onClick={() => window.scrollTo({ top: 0 })} className='button__next'>
             next
           </button>
         </Link>
-      </div>
+      </footer>
 
     </div>
   )
