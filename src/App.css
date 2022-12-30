@@ -24,25 +24,60 @@ footer {
 
 .outter__div {
   position: relative;
-  background-color: #1b1b1b;
-  border-radius: 75px;
-  width: 1300px;
-  height: 550px;
-  margin: 20px auto;
-  padding: 50px;
+  background-color: #000000;
+  border-radius: 36px;
+  width: 1400px;
+  height: 650px;
+  margin: 20px auto 0px auto;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 330px;
+  border: none;
+  border-radius: 15px;
+  padding: 15px;
+  background: linear-gradient(145deg, #202328, #272a2f);
+  box-shadow: 16px 16px 30px #1f2125,
+    -16px -16px 30px #292d33;
+  font-size: medium;
 }
 
 
+.morph__button {
+  background-image: linear-gradient(-45deg, #383b40, #24272c, #101318);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: white;
+  border: none;
+}
+
+.slider {
+  width: 200px;
+}
+
+
+.morph__div {
+  margin: 20px auto;
+  width: 600px;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #202328, #272a2f);
+  box-shadow: 20px 20px 60px #1f2125,
+    -20px -20px 60px #292d33;
+}
+
 .button__next {
-  margin-top: 50px;
-  width: 300px;
-  height: 55px;
+  margin: 20px;
+  width: 200px;
+  height: 45px;
   border-radius: 15px;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #1b1b1b;
   color: #ffffff;
   text-decoration: none;
-  border: 4px solid #582ced;
+  border: 3px solid #582ced;
   box-shadow: 0 1px 5px #582ced;
 }
 
