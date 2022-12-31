@@ -168,7 +168,11 @@ $label-color: $grad-color;
 .needle-axle {
 	
 }
-
+.InfiniteRotate{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
 .needle {
 	position: absolute;
 	top: 50%;

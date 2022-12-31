@@ -1,26 +1,22 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import ReactSpeedometer from "react-d3-speedometer";
+import styled, { keyframes } from 'styled-components';
 
 const needle = () => {
-    /*
-    const rotateElem = () =>{
-        document.querySelector('.box').style.transform
-                       = 'rotate(90deg)'
-    }
-    */
-   let angle = 90;
+    
+
+    const rotate = keyframes`
+  to {
+    transform: rotate(45deg);
+  }
+`
+
+const InfiniteRotate = styled.div`
+  animation: ${rotate} 1s linear infinite;
+`
     return(
-    <div>
-        <div className="box" style ={{height: "250px",
-                    width: "150px",
-                    backgroundColor:"#e30",
-                    transform: "rotate("+angle+"deg)"}}>
-                 
-        </div>
-        
-        <ReactSpeedometer/>
-    </div>
+        <InfiniteRotate>🥴</InfiniteRotate>
     );
 
 }
