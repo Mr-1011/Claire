@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import "./engine.scss";
 import Needle from "./needle/needle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled, { keyframes } from 'styled-components';
 
 
@@ -15,8 +15,12 @@ let predicition_horizon = 5;
 
 // angles for the needles in the speedometer(alpha = currentspeed)
 
-const [alpha,setAlpha] = useState(10);
+const [alpha,setAlpha] = useState(startspeed);
 const [beta,setBeta] = useState(90);
+
+useEffect(() =>{
+	console.log("angle changed")
+},[alpha])
 
 //calculate the speed continiously and update the needle
 //speed(t) = startspeed+t*acceleration
@@ -54,7 +58,7 @@ top: 50%;
 left: 50%;
 `
 
-setSpeed();
+
 
     return(
         <div className="engine">
@@ -69,7 +73,7 @@ setSpeed();
 	        <div className="meter meter--rpm meter--big-label"></div>
 	        <div className="meter meter--gear"><div>1</div></div>
 	        <div className="meter meter--speed">
-				<div  style={{transform: "rotate("+startspeed+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+				<div  style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 				<InfiniteRotate>
 					<div className="needle"></div>
 				</InfiniteRotate>
@@ -81,9 +85,10 @@ setSpeed();
 			
         </div>
 		<Needle/>
+
        
 
-        <button className="btn-volume active">start</button>
+        <button className="btn-volume active" onClick={()=> setAlpha(startspeed+acceleration)}>start</button>
 
 
         
