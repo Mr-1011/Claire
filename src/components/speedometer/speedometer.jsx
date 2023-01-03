@@ -6,21 +6,27 @@ import { useState, useEffect } from "react";
 import styled, { keyframes } from 'styled-components';
 
 
-const Speedometer = () =>{
+function Speedometer(dataFromParent){
 
 // set the start scenario: startspeed, acceleration (function or constant) and delta t (time horizon predicition)
-let acceleration = -20;
+let acceleration = 0.5;
 const startspeed = 100;
 let predicition_horizon = 5;
 
 // angles for the needles in the speedometer(alpha = currentspeed)
 
 const [alpha,setAlpha] = useState(startspeed+60);
-const [beta,setBeta] = useState(60);
+const [beta,setBeta] = useState(startspeed+acceleration*predicition_horizon+60);
+const [notifications,setNotifications] = useState("")
 
 useEffect(() =>{
 	console.log("angle changed")
-},[alpha])
+	if(dataFromParent.dataFromParent==true){
+		setBeta(60);
+		setNotifications("Red light detected")
+	}
+
+},[dataFromParent.dataFromParent])
 
 
 
@@ -28,22 +34,6 @@ useEffect(() =>{
 //calculate the speed continiously and update the needle
 //speed(t) = startspeed+t*acceleration
 
-function delay(time) {
-	return new Promise(resolve => setTimeout(resolve, time));
-  }
-
-
-
-const setSpeed = () => {
-	let i = 0;
-	while(i<100){
-		delay(1000).then(() => {
-			console.log('delayed by 1 second')});
-		i=i+1;
-	
-	}
-
-}
 //predicted_speed = speed * Time_horizon* acceleration
 const setPred_Speed = (acceleration,startspeed,predicition_horizon) => {
 	let speed = startspeed+predicition_horizon*acceleration+60;
@@ -58,11 +48,13 @@ to {
 `
 
 const InfiniteRotate = styled.div`
-animation: ${rotate} 8s linear infinite;
+animation: ${rotate} 4s linear infinite;
 position: absolute;
 top: 50%;
 left: 50%;
 `
+
+console.log(dataFromParent.dataFromParent);
 
     return(
         <div className="engine">
@@ -72,8 +64,8 @@ left: 50%;
 
         <div className="dashboard">
 			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
-			<h4 style={{color:"white"}}>acceleration: {acceleration} m/s</h4>
 			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
+			<h4 style={{color:"red"}}>{notifications}</h4>
 	        
 	        <div className="meter meter--speed">
 

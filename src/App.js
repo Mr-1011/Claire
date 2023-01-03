@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={
-            <Dashboard/>
+            <Animation/>
 
           } />
           <Route path='/animation' element={
