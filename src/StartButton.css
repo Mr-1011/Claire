@@ -1,0 +1,145 @@
+.mybutton {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  background-image: linear-gradient(to bottom right, #cccccc 0%, #6b6b6b 20%, black 50%, black 70%, #6b6b6b 100%);
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  display: -ms-grid;
+  display: grid;
+  cursor: pointer;
+}
+
+.mybutton .mybuttoninner {
+  width: 85px;
+  height: 85px;
+  border-radius: 100px;
+  background-image: linear-gradient(to bottom, #9e9e9e 0%, white 40%, #383838 70%, white 100%);
+  margin: 2px auto 6px auto;
+  padding: 2px;
+}
+
+.mybutton .mybuttoninner .mybuttoninner2 {
+  width: 85px;
+  height: 85px;
+  background-color: #494949;
+  border-radius: 100px;
+  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.7);
+  display: -ms-grid;
+  display: grid;
+}
+
+.mybutton .mybuttoninner .mybuttoninner2 ul {
+  padding: 0;
+}
+
+.mybutton .mybuttoninner .mybuttoninner2 ul li {
+  color: #aaaaaa;
+  list-style-type: none;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 7px;
+}
+
+.mybutton .mybuttoninner .mybuttoninner2 ul .mybuttoninnerline2 {
+  width: 70px;
+  height: 1px;
+  margin: auto;
+  background-color: black;
+  z-index: -1;
+}
+
+.mybutton .mybuttoninner .mybuttoninner2 ul .mybuttoninnerline {
+  width: 70px;
+  height: 1px;
+  margin: auto;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+@-webkit-keyframes animshadow {
+  50% {
+    -webkit-box-shadow: 0 0px 20px white;
+    box-shadow: 0 0px 20px white;
+    background-color: white;
+  }
+
+  100% {
+    -webkit-box-shadow: 0 0px 4px #582ced;
+    box-shadow: 0 0px 4px #582ced;
+    background-color: #582ced;
+  }
+}
+
+@keyframes animshadow {
+  50% {
+    -webkit-box-shadow: 0 0px 20px white;
+    box-shadow: 0 0px 20px white;
+    background-color: white;
+  }
+
+  100% {
+    -webkit-box-shadow: 0 0px 4px #582ced;
+    box-shadow: 0 0px 4px #582ced;
+    background-color: #582ced;
+  }
+}
+
+@-webkit-keyframes pressedbutton {
+  100% {
+    -webkit-transform: scale(1.47);
+    transform: scale(1.47);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes pressedbutton {
+  100% {
+    -webkit-transform: scale(1.47);
+    transform: scale(1.47);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.mybutton:hover .mybuttoninnerline {
+  -webkit-box-shadow: 0 0px 4px #582ced;
+  box-shadow: 0 0px 4px #582ced;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #582ced;
+}
+
+.mybutton:focus {
+  border: none;
+  outline: none;
+  -webkit-animation: pressedbutton 0.2s alternate;
+  animation: pressedbutton 0.2s alternate;
+}
+
+.mybutton:focus .mybuttoninner {
+  border: none;
+}
+
+.mybutton:focus .mybuttoninner2 {
+  border: none;
+}
+
+.mybutton:focus .mybuttoninnerline2 {
+  border: none;
+}
+
+.mybutton:focus .mybuttoninnerline {
+  -webkit-animation: animshadow 0.4s forwards;
+  animation: animshadow 0.4s forwards;
+  border: none;
+}

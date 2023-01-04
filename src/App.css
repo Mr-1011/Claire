@@ -21,6 +21,31 @@ footer {
   justify-content: space-around;
 }
 
+.spinner {
+  background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
+  width: 200px;
+  height: 200px;
+  animation: spinning82341 2s linear infinite;
+  text-align: center;
+  border-radius: 100px;
+  filter: blur(1px);
+  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+}
+
+.spinner1 {
+  background-color: rgb(0, 0, 0);
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  filter: blur(10px);
+}
+
+@keyframes spinning82341 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .outter__div {
   position: relative;
@@ -68,26 +93,59 @@ footer {
     -20px -20px 60px #292d33;
 }
 
+
+
+.morph__button {
+  background-image: linear-gradient(-45deg, #383b40, #24272c, #101318);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: white;
+  border: none;
+}
+
+.morph__button:hover {
+  background: #24272c;
+}
+
+.morph__button:active {
+  background: #383b40;
+}
+
+
+
 .button__next {
   margin: 20px;
-  width: 200px;
-  height: 45px;
-  border-radius: 15px;
+  width: 210px;
+  height: 50px;
+  border-radius: 9px;
+  border: none;
   font-size: 18px;
-  background-color: #1b1b1b;
-  color: #ffffff;
-  text-decoration: none;
-  border: 3px solid #582ced;
-  box-shadow: 0 1px 5px #582ced;
+  color: white;
+  background: linear-gradient(225deg, #181818, #292d33);
+  box-shadow: -5px 5px 20px #191919,
+    5px -5px 20px #292929;
 }
 
 .button__next:hover {
-  background-color: #582ced;
+  background: #292d33;
+  transition: 1s ease;
+  box-shadow: -5px 5px 20px #191919,
+    5px -5px 20px #292929;
 }
 
 .button__next:active {
-  transform: scale(0.95);
+  transition: box-shadow 1s ease;
+  border-radius: 9px;
+  background: #292d33;
+  box-shadow: inset -5px 5px 20px #191919,
+    inset 5px -5px 20px #292929;
 }
+
+
+
+
+
 
 
 .button__start {

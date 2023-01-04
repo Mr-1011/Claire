@@ -6,19 +6,19 @@ function SingleQuestion() {
     {
       questionText: 'How long have you had your license for?',
       answerOptions: [
-        { answerText: '2 years', isCorrect: false },
-        { answerText: '5 years', isCorrect: false },
-        { answerText: '10 years', isCorrect: true },
-        { answerText: '20 years or more', isCorrect: false },
+        { answerText: '2 years', answerPoints: 1 },
+        { answerText: '5 years', answerPoints: 2 },
+        { answerText: '10 years', answerPoints: 3 },
+        { answerText: '20 years or more', answerPoints: 4 },
       ],
     },
     {
       questionText: 'Who is CEO of Tesla?',
       answerOptions: [
-        { answerText: 'Jeff Bezos', isCorrect: false },
-        { answerText: 'Elon Musk', isCorrect: true },
-        { answerText: 'Bill Gates', isCorrect: false },
-        { answerText: 'Tony Stark', isCorrect: false },
+        { answerText: 'Jeff Bezos', answerPoints: 1 },
+        { answerText: 'Elon Musk', answerPoints: 2 },
+        { answerText: 'Bill Gates', answerPoints: 3 },
+        { answerText: 'Bill Gates', answerPoints: 4 },
       ],
     }
   ];
@@ -27,11 +27,8 @@ function SingleQuestion() {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
-  const handleAnswerOptionClick = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score + 1);
-    }
-
+  const handleAnswerOptionClick = (answerPoints) => {
+    setScore(score + answerPoints);
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
@@ -44,8 +41,7 @@ function SingleQuestion() {
     <div className='app'>
       {showScore ? (
         <div className='score-section'>
-          Thank you
-          {/* You scored {score} out of {questions.length} */}
+          You scored {score} out of {questions.length}
         </div>
       ) : (
         <>
@@ -57,7 +53,7 @@ function SingleQuestion() {
           </div>
           <div className='answer-section'>
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button className='question-button' onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+              <button className='question-button' onClick={() => handleAnswerOptionClick(answerOption.answerPoints)}>{answerOption.answerText}</button>
             ))}
           </div>
         </>

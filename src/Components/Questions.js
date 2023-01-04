@@ -20,19 +20,19 @@ function Questions() {
       <Grid container>
         <Grid item xs={1}>
           <div style={{ height: "600px", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center" }}>
-            <IconButton aria-label="widget" size="large" sx={{ color: "white" }} >
+            <IconButton aria-label="widget" size="large" sx={{ color: "grey" }} >
               <DirectionsCarIcon sx={{ fontSize: 60 }} />
             </IconButton>
-            <IconButton aria-label="widget" size="large" sx={{ color: "white" }} >
+            <IconButton aria-label="widget" size="large" sx={{ color: "grey" }} >
               <NearMeIcon sx={{ fontSize: 60 }} />
             </IconButton>
             <IconButton aria-label="widget" size="large" sx={{ color: "white" }}>
               <WidgetsIcon sx={{ fontSize: 60 }} />
             </IconButton>
-            <IconButton aria-label="widget" size="large" sx={{ color: "white" }}>
+            <IconButton aria-label="widget" size="large" sx={{ color: "grey" }}>
               <LibraryMusicIcon sx={{ fontSize: 60 }} />
             </IconButton>
-            <IconButton aria-label="widget" size="large" sx={{ color: "white" }}>
+            <IconButton aria-label="widget" size="large" sx={{ color: "grey" }}>
               <SettingsIcon sx={{ fontSize: 60 }} />
             </IconButton>
           </div>
@@ -51,6 +51,9 @@ function Questions() {
                 <h2 style={{ marginRight: "20px" }}>22:10</h2>
               </div>
             </div>
+
+
+
 
             <div className="morph__div">
               <SingleQuestion></SingleQuestion>
