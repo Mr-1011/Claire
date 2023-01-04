@@ -4,7 +4,7 @@ import "./engine.scss";
 import Needle from "./needle/needle";
 import { useState, useEffect } from "react";
 import styled, { keyframes } from 'styled-components';
-
+import notification from "./notification.mp3";
 
 function Speedometer(dataFromParent){
 
@@ -19,11 +19,18 @@ const [alpha,setAlpha] = useState(startspeed+60);
 const [beta,setBeta] = useState(startspeed+acceleration*predicition_horizon+60);
 const [notifications,setNotifications] = useState("")
 
+function play(){
+	new Audio(notification).play()
+}
+
+
 useEffect(() =>{
 	console.log("angle changed")
 	if(dataFromParent.dataFromParent==true){
 		setBeta(60);
 		setNotifications("Red light detected")
+		play();
+		
 	}
 
 },[dataFromParent.dataFromParent])
@@ -53,6 +60,10 @@ position: absolute;
 top: 50%;
 left: 50%;
 `
+
+
+
+
 
 console.log(dataFromParent.dataFromParent);
 
