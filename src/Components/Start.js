@@ -20,13 +20,7 @@ function Start() {
           </StartButton>
         </Grid>
         <Grid item xs>
-          {/*           <div class="spinner">
-            <div class="spinner1">
-
-            </div>
-          </div> */}
-
-          {<Claire />}
+          <Claire />
         </Grid>
       </Grid>
     </div>
