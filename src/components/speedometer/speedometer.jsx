@@ -9,16 +9,18 @@ import notification from "./notification.mp3";
 function Speedometer(dataFromParent){
 
 // set the start scenario: startspeed, acceleration (function or constant) and delta t (time horizon predicition)
-let acceleration = 1.5;
+
 const startspeed = 100;
 let predicition_horizon = 5;
 
 // angles for the needles in the speedometer(alpha = currentspeed)
 
+const [acceleration,setAcceleration] = useState(1.5);
 const [alpha,setAlpha] = useState(startspeed+60);
 const [beta,setBeta] = useState(startspeed+acceleration*predicition_horizon+60);
-const [notifications,setNotifications] = useState("")
+const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
+const [animationtime, setAnimationtime] = useState(10);
 
 function play(){
 	new Audio(notification).play()
@@ -30,6 +32,8 @@ useEffect(() =>{
 	console.log("angle changed")
 	if(dataFromParent.dataFromParent.traffic==true){
 		setBeta(60);
+		setAcceleration(0);
+		setAnimationtime(4);
 		if(audiocounter==0){
 			setNotifications("Red light detected")
 			play();
@@ -64,20 +68,32 @@ to {
 `
 
 const InfiniteRotate = styled.div`
-animation: ${rotate} 4s linear infinite;
+animation: ${rotate} ${animationtime}s linear infinite;
+position: absolute;
+top: 50%;
+left: 50%;
+`
+const rotate_green = keyframes`
+to {
+  transform: rotate(${(beta+acceleration*predicition_horizon)-beta}deg);
+}
+`
+
+const InfiniteRotateGreen = styled.div`
+animation: ${rotate_green} ${animationtime}s linear infinite;
 position: absolute;
 top: 50%;
 left: 50%;
 `
 
-const animationend = () =>{
-	setAlpha(beta);
-	setBeta(beta+acceleration*predicition_horizon)
-	console.log("called")
-};
 
+/*
+InfiniteRotate.addEventListener("animationend", myEndFunction);
 
-
+function myEndFunction(){
+	console.log("called");
+}
+*/
     return(
         <div className="engine">
         <div className="head">
@@ -119,22 +135,21 @@ const animationend = () =>{
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(300 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (300 + 180) + "deg)"}}></div>
 
-				<div  style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
-				<InfiniteRotate onAnimationEnd={()=>{console.log("called")}}>
+				<div style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+				<InfiniteRotate>
 					<div className="needle"></div>
 				</InfiniteRotate>
 				</div>
-			
-					<div className="needle" style={{background:"#00FF00",transform: "rotate("+beta+"deg)"}}></div>
-				
+
+				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+				<InfiniteRotateGreen>
+					<div className="needle" style={{background:"#00FF00"}}></div>
+				</InfiniteRotateGreen>
+				</div>
 			</div>
 			
         </div>
 		
-
-       
-
-        <button className="btn-volume active" onClick={()=> setAlpha(startspeed+acceleration)}>start</button>
 
 
         

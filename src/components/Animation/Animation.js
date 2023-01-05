@@ -15,6 +15,7 @@ function Animation() {
   const [showTraffic, setShowTraffic] = useState(false);
   const [stopRoad, setStopRoad] = useState(false);
   
+  
 
   React.useEffect(() => {
     const showTraffic = setTimeout(() => {
@@ -23,7 +24,7 @@ function Animation() {
       setTimeout(() => {
         setStopRoad(true);
       }, 4000);
-    }, Math.random() * 4 * 4000);
+    }, Math.random() * 4 * 2500);
     return () => {
       window.clearTimeout(showTraffic);
     };
