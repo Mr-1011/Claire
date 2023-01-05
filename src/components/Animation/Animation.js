@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import Grid from '@mui/material/Grid';
 import "./animation.css";
 import {
@@ -23,7 +23,7 @@ function Animation() {
       setTimeout(() => {
         setStopRoad(true);
       }, 4000);
-    }, Math.random() * 4 * 1000);
+    }, Math.random() * 4 * 4000);
     return () => {
       window.clearTimeout(showTraffic);
     };
@@ -33,7 +33,7 @@ function Animation() {
     
     <Grid container column={2}>
         <Grid item xs={4}>
-            <Speedometer dataFromParent={showTraffic}/>
+            <Speedometer dataFromParent={{traffic:showTraffic,stop:stopRoad}} />
         </Grid>
         <Grid item xs={4}>
             <Dashboard>

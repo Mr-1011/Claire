@@ -2,14 +2,14 @@ import { render } from "@testing-library/react";
 import React from "react";
 import "./engine.scss";
 import Needle from "./needle/needle";
-import { useState, useEffect } from "react";
+import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification from "./notification.mp3";
 
 function Speedometer(dataFromParent){
 
 // set the start scenario: startspeed, acceleration (function or constant) and delta t (time horizon predicition)
-let acceleration = 0.5;
+let acceleration = 1.5;
 const startspeed = 100;
 let predicition_horizon = 5;
 
@@ -18,22 +18,31 @@ let predicition_horizon = 5;
 const [alpha,setAlpha] = useState(startspeed+60);
 const [beta,setBeta] = useState(startspeed+acceleration*predicition_horizon+60);
 const [notifications,setNotifications] = useState("")
+const [audiocounter, setAudiocounter] = useState(0);
 
 function play(){
 	new Audio(notification).play()
+	setAudiocounter(1);
 }
 
 
 useEffect(() =>{
 	console.log("angle changed")
-	if(dataFromParent.dataFromParent==true){
+	if(dataFromParent.dataFromParent.traffic==true){
 		setBeta(60);
-		setNotifications("Red light detected")
-		play();
+		if(audiocounter==0){
+			setNotifications("Red light detected")
+			play();
+		}
+		
+		
+	}
+	if(dataFromParent.dataFromParent.stop==true){
+		setAlpha(60);
 		
 	}
 
-},[dataFromParent.dataFromParent])
+},[dataFromParent.dataFromParent.traffic, dataFromParent.dataFromParent.stop])
 
 
 
@@ -61,11 +70,13 @@ top: 50%;
 left: 50%;
 `
 
+const animationend = () =>{
+	setAlpha(beta);
+	setBeta(beta+acceleration*predicition_horizon)
+	console.log("called")
+};
 
 
-
-
-console.log(dataFromParent.dataFromParent);
 
     return(
         <div className="engine">
@@ -94,8 +105,22 @@ console.log(dataFromParent.dataFromParent);
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(280 * (Math.PI / 180))) + "%"}}>220</div>
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(300 * (Math.PI / 180))) + "%"}}>240</div>
 
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(60 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(60 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (60 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(80 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(80 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (80 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(100 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(100 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (100 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(120 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(120 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (120 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(140 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(140 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (140 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(160 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(160 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (160 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(180 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(180 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (180 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(200 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(200 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (200 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(220 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(220 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (220 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(240 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(240 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (240 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(260 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (260 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(300 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (300 + 180) + "deg)"}}></div>
+
 				<div  style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
-				<InfiniteRotate>
+				<InfiniteRotate onAnimationEnd={()=>{console.log("called")}}>
 					<div className="needle"></div>
 				</InfiniteRotate>
 				</div>
