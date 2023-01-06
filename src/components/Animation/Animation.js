@@ -5,18 +5,19 @@ import {
   Dashboard,
   DashboardWrapper,
   RoadWrapper,
-} from "./components/Dashboard";
-import { Road, TrafficWrapper } from "./components/Road";
+} from "./Dashboard";
+import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
 import Speedometer from "../speedometer/speedometer";
 import React from "react";
+
+//code from sirarifarid-fiverr
+//showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
+//traffic light apperars after random time, Then car stops after 4 seconds
 function Animation() {
-  const [count, setCount] = useState(0);
   const [showTraffic, setShowTraffic] = useState(false);
   const [stopRoad, setStopRoad] = useState(false);
   
-  
-
   React.useEffect(() => {
     const showTraffic = setTimeout(() => {
       setShowTraffic(true);

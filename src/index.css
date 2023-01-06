@@ -16,33 +16,3 @@ body {
   min-height: 100vh;
   overflow: hidden;
 }
-
-.dashboard_wrapper > div {
-  animation: moveroad 500ms linear infinite;
-}
-
-.traffic {
-  animation: movetraffic 4s linear;
-}
-
-@keyframes moveroad {
-  0% {
-    transform: translateY(-20px);
-  }
-
-  100% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes movetraffic {
-  0% {
-    left: 26px;
-    top: 4rem;
-  }
-
-  100% {
-    left: -32px;
-    top: 19rem;
-  }
-}
