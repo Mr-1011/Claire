@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Questions from './Components/Questions'
 import Start from './Components/Start'
 import Profile from './Components/Profile'
+import Animation from './Components/Animation/Animation';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Profile />
           } />
           <Route path='/speedometer' element={
-            <h1>speedometer</h1>
+            <Animation />
           } />
         </Routes>
       </Router>
