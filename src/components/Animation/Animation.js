@@ -9,6 +9,7 @@ import {
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
 import Speedometer from "../speedometer/speedometer";
+import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
 
 //code from sirarifarid-fiverr
@@ -54,6 +55,9 @@ function Animation() {
                 </RoadWrapper>
             </DashboardWrapper>
             </Dashboard>
+        </Grid>
+        <Grid item xs={4}>
+            <Batterystatus/>
         </Grid>
     </Grid>
     
