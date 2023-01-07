@@ -4,21 +4,70 @@ import '../SingleQuestion.css';
 function SingleQuestion() {
   const questions = [
     {
-      questionText: 'How long have you had your license for?',
+      questionText: 'What is your gender?',
       answerOptions: [
-        { answerText: '2 years', answerPoints: 1 },
-        { answerText: '5 years', answerPoints: 2 },
-        { answerText: '10 years', answerPoints: 3 },
-        { answerText: '20 years or more', answerPoints: 4 },
+        { answerText: 'Male', answerPoints: 0 },
+        { answerText: 'Female', answerPoints: 0 },
+        { answerText: 'Prefer not to say', answerPoints: 0},
       ],
     },
     {
-      questionText: 'Who is CEO of Tesla?',
+      questionText: 'What is your age?',
       answerOptions: [
-        { answerText: 'Jeff Bezos', answerPoints: 1 },
-        { answerText: 'Elon Musk', answerPoints: 2 },
-        { answerText: 'Bill Gates', answerPoints: 3 },
-        { answerText: 'Bill Gates', answerPoints: 4 },
+        { answerText: '19-29', answerPoints: 0},
+        { answerText: '30-39', answerPoints: 0},
+        { answerText: '40-49', answerPoints: 0},
+        { answerText: '50-59', answerPoints: 0},
+        { answerText: '60+', answerPoints: 0},
+      ],
+    },
+    {
+      questionText: 'How long have you had your license for?',
+      answerOptions: [
+        { answerText: 'less than 2 years', answerPoints: 0 },
+        { answerText: '2-5 years', answerPoints: 3 },
+        { answerText: '5 years or more', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'How many years have you been driving?',
+      answerOptions: [
+        { answerText: 'less than 2 years', answerPoints: 0 },
+        { answerText: '2-5 years', answerPoints: 3 },
+        { answerText: '5 years or more', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'How many times you drive per week?',
+      answerOptions: [
+        { answerText: 'less than 2 times', answerPoints: 0 },
+        { answerText: '2-5 times', answerPoints: 3 },
+        { answerText: '5 times or more', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'Have you already had experience with a AD?',
+      answerOptions: [
+        { answerText: 'None or very litte', answerPoints: 0 },
+        { answerText: 'Basic knowledge', answerPoints: 3 },
+        { answerText: 'Advanced knowledge', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'Do you have any knowledge of AD/DL?',
+      answerOptions: [
+        { answerText: 'None or very litte', answerPoints: 0 },
+        { answerText: 'Basic knowledge', answerPoints: 3 },
+        { answerText: 'Advanced knowledge', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'Do you have any perceived risks?',
+      answerOptions: [
+        { answerText: 'I’m afraid AD has security issues', answerPoints: 0 },
+        { answerText: 'I’m afraid AD might be out of control', answerPoints: 0},
+        { answerText: 'I’m afraid AD will not give explanation about its decisions', answerPoints: 0},
+        { answerText: 'I’m afraid bad communications network and other factors might influence driving', answerPoints: 0},
       ],
     }
   ];
