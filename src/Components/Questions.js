@@ -11,25 +11,30 @@ function Questions() {
     <div>
       <Interface>
 
-        <div style={{ display: "flex", margin: "20px 50px 0px 50px", justifyContent: "space-between" }}>
+
+
+
+        <SingleQuestion>
+
+        </SingleQuestion>
+
+        {/* <div style={{ display: "flex", margin: "20px 50px 0px 50px", justifyContent: "space-between" }}>
           <div className='morph__div'>
             <img alt={"..."} src={ClaireGif} style={{ width: "100px", height: "100", borderRadius: "100%" }}></img>
           </div>
-
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-            {/* <Link to='/profile'> */}
+            <Link to='/profile'>
             <button className='morph__button'>
               Login
             </button>
-            {/* </Link> */}
+            </Link>
             <Link to='/profile'>
               <button className='morph__button'>
                 Create New Profile
               </button>
             </Link>
           </div>
-
-        </div>
+        </div> */}
 
       </Interface>
     </div >

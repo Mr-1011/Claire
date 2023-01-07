@@ -51,7 +51,17 @@ footer {
 }
 
 
-
+.morph__div__small {
+  width: 360px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 350px;
+  background: #24272C;
+  box-shadow: -18px -18px 36px rgba(255, 255, 255, 0.05), 18px 18px 36px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  font-size: 36px;
+  position: relative;
+}
 
 
 
@@ -61,12 +71,14 @@ footer {
   background: #24272C;
   box-shadow: -18px -18px 36px rgba(255, 255, 255, 0.05), 18px 18px 36px rgba(0, 0, 0, 0.25);
   border-radius: 24px;
+  font-size: 36px;
 }
 
 
 .morph__button {
-  width: 370px;
+  width: 360px;
   height: 150px;
+  box-sizing: border-box;
   padding: 10px 30px;
   color: white;
   border: #24272C;
