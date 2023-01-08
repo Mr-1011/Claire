@@ -3,7 +3,6 @@ import '../App.css';
 import ClaireGif from '../img/Claire.gif'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 8,
