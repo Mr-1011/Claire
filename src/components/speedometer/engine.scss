@@ -1,11 +1,11 @@
-$meter-bg-color: white;
+$meter-bg-color: #0c0b11;
 
-$ring-size: 3.5%;
-$ring-color: #333;
+$ring-size: 1.5%;
+$ring-color: #FFFFFF;
 
 $grad-font-size: 1.25rem;
 $grad-font-size-big: 2rem;
-$grad-color: #555;
+$grad-color: #FFFFFF;
 
 /*
 $meter-bg-color: rgb(32,32,32);
@@ -29,36 +29,7 @@ $needle-axle-size-big: 37.5%;
 $label-color: $grad-color;
 
 
-@mixin shadow ($level: 2, $inset: false) {
 
-   @if $inset {
-
-		 @if $level == 1 {
-			 box-shadow: inset 0 1px 3px rgba(0,0,0,0.12), inset 0 1px 2px rgba(0,0,0,0.24);
-		 } @else if $level == 2 {
-			 box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), inset 0 3px 6px rgba(0,0,0,0.23);
-		 } @else if $level == 3 {
-			 box-shadow: inset 0 10px 20px rgba(0,0,0,0.19), inset 0 6px 6px rgba(0,0,0,0.23);
-		 } @else if $level == 4 {
-			 box-shadow: inset 0 14px 28px rgba(0,0,0,0.25), inset 0 10px 10px rgba(0,0,0,0.22);
-		 } @else if $level == 5 {
-			 box-shadow: inset 0 19px 38px rgba(0,0,0,0.30), inset 0 15px 12px rgba(0,0,0,0.22);
-		 }
-
-	}	@else {
-		@if $level == 1 {
-			box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-		} @else if $level == 2 {
-			box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-		} @else if $level == 3 {
-			box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-		} @else if $level == 4 {
-			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-		} @else if $level == 5 {
-			box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-		}
-	}
-}
 
 
 
@@ -74,20 +45,33 @@ $label-color: $grad-color;
 .dashboard {
 	display: inline-block;
 	padding: 2rem;
-//	background: #ddd;
+//	background: #;
 	font-family: 'Coda', cursive;
 }
-
+.dot {
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	height: 10rem;
+	width: 10rem;
+	border-color:#FFFFFF;
+	background-color: #FFFFFF;
+	border-radius: 50%;
+	display: inline-block;
+	align-items: center;
+	overflow: visible;
+	z-index:1;
+  }
 .meter {
 	display: inline-block;
 	position: relative;
-	width: 20rem;
-	height: 20rem;
+	width: 25rem;
+	height: 25rem;
 	background-color: $meter-bg-color;
 	border-radius: 50%;
 //	border: 4px solid black;
 	margin: 0 0.5rem;
-	@include shadow(2, true);
+	
 	
 	&:before {
 		content: "";
@@ -100,7 +84,7 @@ $label-color: $grad-color;
 		border-radius: 50%;
 		background: $ring-color;
 		z-index: -1;
-		@include shadow(3);
+		
 	}
 }
 
@@ -183,7 +167,43 @@ $label-color: $grad-color;
 	transform: translate3d(-50%, 0, 0);
 	transform-origin: 50% 0;
 	background-color: $needle-color;
-	@include shadow(1);
+	z-index: -1;
+	
+
+	&:before,
+	&:after {
+		display: block;
+		position: absolute;
+		content: "";
+		width: 0;
+		height: 0;
+		border-style: solid;
+	}
+	
+	&:before {
+		left: -$needle-side-width;
+		border-width: 0 $needle-side-width $needle-height 0;
+		border-color: transparent lighten($needle-color, $needle-shading * 2) transparent transparent;
+	}
+	
+	&:after {
+		right: -$needle-side-width;
+		border-width: $needle-height $needle-side-width 0 0;
+		border-color: darken($needle-color, $needle-shading) transparent transparent transparent;
+	}
+}
+.needle1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: $needle-width;
+	height: $needle-height;
+	transform: translate3d(-50%, 0, 0);
+	transform-origin: 50% 0;
+	background-color: $needle-color;
+	
+	
 
 	&:before,
 	&:after {
@@ -219,7 +239,7 @@ $label-color: $grad-color;
 	border-radius: 50%;
 	background-color: $needle-axle-bg-color;
 	color: $needle-axle-color;
-	@include shadow(2);
+	
 	cursor: pointer;
 	
 	&:hover {
@@ -288,7 +308,7 @@ $label-color: $grad-color;
 	margin: 0;
 	margin-left: -2rem;
 	margin-right: -2rem;
-	@include shadow(2, true);
+	
 
 	&:before {
 		width: 100% + $ring-size * 4 * 2;

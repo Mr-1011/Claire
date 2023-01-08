@@ -5,7 +5,9 @@ import Pie from "../testfield/pie";
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification from "./notification.mp3";
-
+import Claire from "../Claire";
+import Claire_gif from "../../img/Claire.gif"
+import Claire_jpg from "../../img/claire.jpg";
 function Speedometer(dataFromParent){
 
 // set the start scenario: startspeed and delta t (time horizon predicition)
@@ -29,6 +31,7 @@ const [level, setLevel] = useState(0);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
+const [showGif, setShowGif] = useState(false)
 
 function showlevel(level){
 	if(level==2){
@@ -61,7 +64,10 @@ useEffect(() =>{
 		//make sure audio is only played once
 		setNotifications("Red light detected")
 		if(audiocounter==0&&showAudio==true){
-			
+			setShowGif(true);
+			setTimeout(() => {
+				setShowGif(false);
+			  }, 4000);
 			play();
 		}
 	}
@@ -135,6 +141,10 @@ function myEndFunction(){
 			<h4 style={{color:"red"}}>{showNotification ? notifications :<br></br>}</h4>
 	        
 	        <div className="meter meter--speed">
+
+
+				<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
+			
 
 				{/* Enter the acceleration half round component here.  */}
 				<div  style={{left: (50 - (50 - 10) * Math.sin(180 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(180 * (Math.PI / 180))) + "%",color:"green"}}>Place half round item here</div>

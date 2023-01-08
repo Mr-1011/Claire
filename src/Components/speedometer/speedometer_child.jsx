@@ -5,6 +5,9 @@ import "./engine.scss";
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification_child from "./notification_child.mp3";
+import Claire from "../Claire";
+import Claire_gif from "../../img/Claire.gif"
+import Claire_jpg from "../../img/claire.jpg";
 
 function Speedometer(dataFromParent){
 
@@ -29,6 +32,7 @@ const [level, setLevel] = useState(4);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
+const [showGif, setShowGif] = useState(false)
 
 function showlevel(level){
 	if(level==2){
@@ -61,7 +65,10 @@ useEffect(() =>{
 		//make sure audio is only played once
 		setNotifications("Red light detected")
 		if(audiocounter==0&&showAudio==true){
-			
+			setShowGif(true);
+			setTimeout(() => {
+				setShowGif(false);
+			  }, 7000);
 			play();
 		}
 	}
@@ -130,6 +137,8 @@ left: 50%;
 			<h4 style={{color:"red"}}>{showNotification ? notifications :<br></br>}</h4>
 	        
 	        <div className="meter meter--speed">
+
+			<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 
 				
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(60 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(60 * (Math.PI / 180))) + "%"}}>0</div>

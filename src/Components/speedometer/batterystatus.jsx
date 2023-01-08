@@ -43,7 +43,7 @@ export default function batterystatus() {
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(276 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(276 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (276 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(300 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (300 + 180) + "deg)"}}></div>
 				
-                <div className="needle" style={{transform: "rotate(270deg)"}}></div>
+                <div className="needle1" style={{transform: "rotate(270deg)",}}></div>
 				
 			</div>
 			

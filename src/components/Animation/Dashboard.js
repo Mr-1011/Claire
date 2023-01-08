@@ -17,7 +17,7 @@ export const Dashboard = styled.div({
     content: `""`,
     top: 0,
     width: "100vw",
-    height: "29vh",
+    height: "17vh",
     left: 0,
     background: "linear-gradient(180deg, #0c0b11 60%, transparent)",
     zIndex: 10,
@@ -29,7 +29,7 @@ export const Dashboard = styled.div({
     height: 100,
     left: -2,
     right: -2,
-    background: "linear-gradient(0deg, #0c0b11 60%, transparent)",
+    
     zIndex: 10,
   },
 });
