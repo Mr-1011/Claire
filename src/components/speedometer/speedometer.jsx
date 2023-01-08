@@ -31,7 +31,8 @@ const [level, setLevel] = useState(0);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
-const [showGif, setShowGif] = useState(false)
+const [showGif, setShowGif] = useState(false);
+const [color, setColor] = useState("green");
 
 function showlevel(level){
 	if(level==2){
@@ -63,6 +64,7 @@ useEffect(() =>{
 		setAnimationtime(4);
 		//make sure audio is only played once
 		setNotifications("Red light detected")
+		setColor("red");
 		if(audiocounter==0&&showAudio==true){
 			setShowGif(true);
 			setTimeout(() => {
@@ -135,11 +137,10 @@ function myEndFunction(){
         </div>
 
         <div className="dashboard">
-			<div style={{height:200}}></div>
-			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
-			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
-			<h4 style={{color:"red"}}>{showNotification ? notifications :<br></br>}</h4>
-	        
+			<div style={{height:150}}></div>
+			<div style={{color:"white"}}>
+			<h2 style={{color:""+color+"", border:"1px solid "+color+""}}>{showNotification ? notifications :<br></br>}</h2>
+	        </div>
 	        <div className="meter meter--speed">
 
 
@@ -147,7 +148,7 @@ function myEndFunction(){
 			
 
 				{/* Enter the acceleration half round component here.  */}
-				<div  style={{left: (50 - (50 - 10) * Math.sin(180 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(180 * (Math.PI / 180))) + "%",color:"green"}}>Place half round item here</div>
+				<div  style={{left: (50 - (50 - 10) * Math.sin(180 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(180 * (Math.PI / 180))) + "%",color:"green"}}></div>
 				
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(60 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(60 * (Math.PI / 180))) + "%"}}>0</div>
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(80 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(80 * (Math.PI / 180))) + "%"}}>20</div>

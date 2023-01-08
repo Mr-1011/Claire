@@ -9,10 +9,9 @@ export default function batterystatus() {
         </div>
 
         <div className="dashboard">
-            <div style={{height:200}}></div>
-			<h4 style={{color:"white"}}>batterystatus 88%</h4>
-			<h4 style={{color:"white"}}>distance coverable: 500 km</h4>
-            <h4 style={{color:"grren"}}>Battery Status: OK </h4>
+            <div style={{height:150}}></div>
+			
+            <h2 style={{color:"green", border:"1px solid green"}}>Battery Status: 88% </h2>
 			
 	        
 	        <div className="meter meter--speed">

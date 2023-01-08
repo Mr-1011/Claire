@@ -32,7 +32,8 @@ const [level, setLevel] = useState(4);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
-const [showGif, setShowGif] = useState(false)
+const [showGif, setShowGif] = useState(false);
+const [color, setColor] = useState("green");
 
 function showlevel(level){
 	if(level==2){
@@ -63,6 +64,7 @@ useEffect(() =>{
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
+		setColor("red");
 		setNotifications("Red light detected")
 		if(audiocounter==0&&showAudio==true){
 			setShowGif(true);
@@ -131,10 +133,10 @@ left: 50%;
         </div>
 
         <div className="dashboard">
-			<div style={{height:200}}></div>
+			<div style={{height:100}}></div>
 			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
 			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
-			<h4 style={{color:"red"}}>{showNotification ? notifications :<br></br>}</h4>
+			<h4 style={{color:""+color+"", border:"1px solid "+color+""}}>>{showNotification ? notifications :<br></br>}</h4>
 	        
 	        <div className="meter meter--speed">
 

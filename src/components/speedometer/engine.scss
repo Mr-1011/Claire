@@ -17,7 +17,7 @@ $tick-color: $grad-color;
 
 $needle-width: 5px;
 $needle-side-width: 3px;
-$needle-height: 140px;
+$needle-height: 230px;
 $needle-color: #e30;
 $needle-shading: 5%;
 
@@ -50,8 +50,8 @@ $label-color: $grad-color;
 }
 .dot {
 	position: absolute;
-	top: 30%;
-	left: 30%;
+	top: 33%;
+	left: 33%;
 	height: 10rem;
 	width: 10rem;
 	border-color:#FFFFFF;
@@ -65,8 +65,8 @@ $label-color: $grad-color;
 .meter {
 	display: inline-block;
 	position: relative;
-	width: 25rem;
-	height: 25rem;
+	width: 30rem;
+	height: 30rem;
 	background-color: $meter-bg-color;
 	border-radius: 50%;
 //	border: 4px solid black;
