@@ -90,7 +90,7 @@ function SingleQuestion() {
     <div className='app'>
       {showScore ? (
         <div className='score-section'>
-          You scored {score} out of {questions.length}
+          You scored {score} out of 30! Your assistance level is identified as Level 2 Complete Visual and basic Audio Assistance.
         </div>
       ) : (
         <>
