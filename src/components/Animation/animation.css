@@ -6,6 +6,9 @@
   .traffic {
     animation: movetraffic 4s linear;
   }
+  .child{
+    animation: movechild 4s linear;
+  }
   
   @keyframes moveroad {
     0% {
@@ -18,6 +21,18 @@
   }
   
   @keyframes movetraffic {
+    0% {
+      left: 26px;
+      top: 4rem;
+    }
+  
+    100% {
+      left: -32px;
+      top: 19rem;
+    }
+  }
+
+  @keyframes movechild {
     0% {
       left: 26px;
       top: 4rem;

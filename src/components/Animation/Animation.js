@@ -1,5 +1,6 @@
 import { useState} from "react";
 import Grid from '@mui/material/Grid';
+import { Link } from "react-router-dom";
 import "./animation.css";
 import {
   Dashboard,
@@ -11,6 +12,8 @@ import { Car_Img, Traffic } from "../../assets/exports";
 import Speedometer from "../speedometer/speedometer";
 import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
+import VibrationOutlinedIcon from '@mui/icons-material/VibrationOutlined';
+import AirlineSeatReclineExtraOutlinedIcon from '@mui/icons-material/AirlineSeatReclineExtraOutlined';
 
 //code from sirarifarid-fiverr
 //showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
@@ -18,11 +21,12 @@ import React from "react";
 function Animation() {
   const [showTraffic, setShowTraffic] = useState(false);
   const [stopRoad, setStopRoad] = useState(false);
+  const [iconcolor, seticonColor] = useState("green");
   
   React.useEffect(() => {
     const showTraffic = setTimeout(() => {
       setShowTraffic(true);
-      
+      seticonColor("red");
       setTimeout(() => {
         setStopRoad(true);
       }, 4000);
@@ -37,6 +41,7 @@ function Animation() {
     <Grid container column={2}>
         <Grid item xs={4}>
             <Speedometer dataFromParent={{traffic:showTraffic,stop:stopRoad}} />
+            <VibrationOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>
         </Grid>
         <Grid item xs={4}>
             <Dashboard>
@@ -55,9 +60,15 @@ function Animation() {
                 </RoadWrapper>
             </DashboardWrapper>
             </Dashboard>
+          <Link to='/speedometer'>
+            <button>
+              next scenario
+            </button>
+        </Link>
         </Grid>
         <Grid item xs={4}>
             <Batterystatus/>
+            <AirlineSeatReclineExtraOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>
         </Grid>
     </Grid>
     

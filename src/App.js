@@ -4,6 +4,7 @@ import Questions from './Components/Questions'
 import Start from './Components/Start'
 import Profile from './Components/Profile'
 import Animation from './Components/Animation/Animation';
+import Animation_child from './Components/Animation/Animation_child';
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
           } />
           <Route path='/speedometer' element={
             <Animation />
+          } />
+          <Route path='/speedometer_child' element={
+            <Animation_child />
           } />
         </Routes>
       </Router>
