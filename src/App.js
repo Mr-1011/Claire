@@ -5,6 +5,7 @@ import Start from './Components/Start'
 import Profile from './Components/Profile'
 import Animation from './Components/Animation/Animation';
 import Animation_child from './Components/Animation/Animation_child';
+import Pie from './Components/testfield/pie';
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           } />
           <Route path='/speedometer_child' element={
             <Animation_child />
+          } />
+          <Route path='/pie' element={
+            <Pie />
           } />
         </Routes>
       </Router>

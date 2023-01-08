@@ -25,6 +25,26 @@ const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
 
+const [level, setLevel] = useState(4);
+const [showSpeed, setShowSpeed] = useState(true);
+const [showAudio, setShowAudio] = useState(true);
+const [showNotification, setShowNotification] = useState(true);
+
+function showlevel(level){
+	if(level==2){
+		setShowAudio(false);
+	}
+	if(level == 3){
+		setShowSpeed(false);
+		setShowAudio(false);
+	}
+	if(level == 4){
+		setShowSpeed(false);
+		setShowAudio(false);
+		setShowNotification(false)
+	}
+}
+
 function play(){
 	new Audio(notification_child).play()
 	setAudiocounter(1);
@@ -39,8 +59,9 @@ useEffect(() =>{
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
-		if(audiocounter==0){
-			setNotifications("Attention! Unpredicatbale Object")
+		setNotifications("Red light detected")
+		if(audiocounter==0&&showAudio==true){
+			
 			play();
 		}
 	}
@@ -106,7 +127,7 @@ left: 50%;
 			<div style={{height:200}}></div>
 			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
 			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
-			<h4 style={{color:"red"}}>{notifications}</h4>
+			<h4 style={{color:"red"}}>{showNotification ? notifications :<br></br>}</h4>
 	        
 	        <div className="meter meter--speed">
 
@@ -147,7 +168,7 @@ left: 50%;
 
 				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 				
-					<div className="needle" style={{background:"#00FF00"}}></div>
+					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
 				
 				</div>
 			</div>

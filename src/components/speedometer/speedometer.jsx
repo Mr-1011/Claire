@@ -20,10 +20,30 @@ let predicition_horizon = 5;
 // animationtime and audiocounter exist to make the animation more stable
 const [acceleration,setAcceleration] = useState(1.5);
 const [alpha,setAlpha] = useState(startspeed+60);
-const [beta,setBeta] = useState(startspeed+acceleration*predicition_horizon+60);
+const [beta,setBeta] = useState(180);
 const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
+
+const [level, setLevel] = useState(4);
+const [showSpeed, setShowSpeed] = useState(true);
+const [showAudio, setShowAudio] = useState(true);
+const [showNotification, setShowNotification] = useState(true);
+
+function showlevel(level){
+	if(level==2){
+		setShowAudio(false);
+	}
+	if(level == 3){
+		setShowSpeed(false);
+		setShowAudio(false);
+	}
+	if(level == 4){
+		setShowSpeed(false);
+		setShowAudio(false);
+		setShowNotification(false)
+	}
+}
 
 function play(){
 	new Audio(notification).play()
@@ -33,13 +53,15 @@ function play(){
 //the useEffect code is executed when the traffic light appears or the car stops
 useEffect(() =>{
 	
+	showlevel(level);
 	if(dataFromParent.dataFromParent.traffic==true){
 		setBeta(60);
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
-		if(audiocounter==0){
-			setNotifications("Red light detected")
+		setNotifications("Red light detected")
+		if(audiocounter==0&&showAudio==true){
+			
 			play();
 		}
 	}
@@ -71,12 +93,13 @@ to {
 `
 
 const InfiniteRotate = styled.div`
-animation: ${rotate} ${animationtime}s linear infinite;
+animation: ${rotate} ${animationtime}s linear;
 position: absolute;
 top: 50%;
 left: 50%;
 `
 //animation for predicted speed (green needle)
+/*
 const rotate_green = keyframes`
 to {
   transform: rotate(${(beta+acceleration*predicition_horizon)-beta}deg);
@@ -89,6 +112,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 `
+*/
 
 //not working function
 /*
@@ -108,10 +132,11 @@ function myEndFunction(){
 			<div style={{height:200}}></div>
 			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
 			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
-			<h4 style={{color:"red"}}>{notifications}</h4>
+			<h4 style={{color:"red"}}>{showNotification ? notifications :<br></br>}</h4>
 	        
 	        <div className="meter meter--speed">
 
+			
 				
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(60 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(60 * (Math.PI / 180))) + "%"}}>0</div>
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(80 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(80 * (Math.PI / 180))) + "%"}}>20</div>
@@ -137,8 +162,8 @@ function myEndFunction(){
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(200 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(200 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (200 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(220 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(220 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (220 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(240 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(240 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (240 + 180) + "deg)"}}></div>
-				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(260 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (260 + 180) + "deg)"}}></div>
-				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(260 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(260 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (260 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(280 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(300 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (300 + 180) + "deg)"}}></div>
 
 				<div style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
@@ -148,9 +173,9 @@ function myEndFunction(){
 				</div>
 
 				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
-				<InfiniteRotateGreen>
-					<div className="needle" style={{background:"#00FF00"}}></div>
-				</InfiniteRotateGreen>
+					
+					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
+				
 				</div>
 			</div>
 			
