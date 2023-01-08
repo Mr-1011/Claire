@@ -8,6 +8,12 @@ h1 {
   line-height: 0px;
 }
 
+.landing__p {
+  font-size: 36px;
+  text-align: center;
+  margin: 30px 40px;
+}
+
 p {
   text-align: left;
 }
