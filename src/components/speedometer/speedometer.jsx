@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import "./engine.scss";
-
+import Pie from "../testfield/pie";
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification from "./notification.mp3";
@@ -25,7 +25,7 @@ const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
 
-const [level, setLevel] = useState(4);
+const [level, setLevel] = useState(0);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
@@ -136,7 +136,8 @@ function myEndFunction(){
 	        
 	        <div className="meter meter--speed">
 
-			
+				{/* Enter the acceleration half round component here.  */}
+				<div  style={{left: (50 - (50 - 10) * Math.sin(180 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(180 * (Math.PI / 180))) + "%",color:"green"}}>Place half round item here</div>
 				
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(60 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(60 * (Math.PI / 180))) + "%"}}>0</div>
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(80 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(80 * (Math.PI / 180))) + "%"}}>20</div>
