@@ -38,12 +38,17 @@ function Animation() {
 
   return (
     
-    <Grid container column={2}>
+    <Grid container column={3}>
         <Grid item xs={4}>
             <Speedometer dataFromParent={{traffic:showTraffic,stop:stopRoad}} />
             <VibrationOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>
         </Grid>
         <Grid item xs={4}>
+            <Link to='/speedometer'>
+            <button style={{color:"white",background:"black",borderColor:"black"}}>
+              next scenario
+            </button>
+            </Link>
             <Dashboard>
             <img src={Car_Img} />
             <DashboardWrapper>
@@ -60,17 +65,26 @@ function Animation() {
                 </RoadWrapper>
             </DashboardWrapper>
             </Dashboard>
-          <Link to='/speedometer'>
-            <button>
-              next scenario
-            </button>
-        </Link>
+          
         </Grid>
         <Grid item xs={4}>
             <Batterystatus/>
-            <AirlineSeatReclineExtraOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>
+          
+              <Grid container direction="column">
+                <Grid item>
+                <AirlineSeatReclineExtraOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>
+                </Grid>
+                <Grid item>
+                <Link to='/speedometer_child'>
+                  <button style={{color:"white",background:"black",borderColor:"black"}}>
+                    next scenario
+                  </button>
+                </Link>
+                </Grid>
+                </Grid>
         </Grid>
-    </Grid>
+           
+      </Grid>
     
   );
 }

@@ -20,7 +20,7 @@ let predicition_horizon = 5;
 // animationtime and audiocounter exist to make the animation more stable
 const [acceleration,setAcceleration] = useState(1.5);
 const [alpha,setAlpha] = useState(startspeed+60);
-const [beta,setBeta] = useState(startspeed+acceleration*predicition_horizon+60);
+const [beta,setBeta] = useState(180);
 const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
@@ -32,7 +32,8 @@ function play(){
 
 //the useEffect code is executed when the traffic light appears or the car stops
 useEffect(() =>{
-	
+	console.log(beta);
+	console.log(alpha);
 	if(dataFromParent.dataFromParent.child==true){
 		setBeta(90);
 		setAcceleration(0);
@@ -43,10 +44,17 @@ useEffect(() =>{
 			play();
 		}
 	}
+	else{
+		setBeta(180);
+		setNotifications("set speed to 120 kmh");
+		setAnimationtime(10);
+		
+	}
 	if(dataFromParent.dataFromParent.stop==true){
 		setAlpha(beta);
 		
 	}
+	
 
 },[dataFromParent.dataFromParent.child, dataFromParent.dataFromParent.stop])
 
@@ -57,11 +65,7 @@ useEffect(() =>{
 //speed(t) = startspeed+t*acceleration
 //predicted_speed = speed * Time_horizon* acceleration
 
-const setPred_Speed = (acceleration,startspeed,predicition_horizon) => {
-	let speed = startspeed+predicition_horizon*acceleration+60;
-	setBeta(speed+60);
-	return speed;
-}
+
 
 //animation for red needle (current speed)
 const rotate = keyframes`
@@ -71,11 +75,13 @@ to {
 `
 
 const InfiniteRotate = styled.div`
-animation: ${rotate} ${animationtime}s linear infinite;
+animation: ${rotate} ${animationtime}s linear;
 position: absolute;
 top: 50%;
 left: 50%;
 `
+
+/*
 //animation for predicted speed (green needle)
 const rotate_green = keyframes`
 to {
@@ -89,14 +95,6 @@ position: absolute;
 top: 50%;
 left: 50%;
 `
-
-//not working function
-/*
-InfiniteRotate.addEventListener("animationend", myEndFunction);
-
-function myEndFunction(){
-	console.log("called");
-}
 */
     return(
         <div className="engine">
@@ -148,9 +146,9 @@ function myEndFunction(){
 				</div>
 
 				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
-				<InfiniteRotateGreen>
+				
 					<div className="needle" style={{background:"#00FF00"}}></div>
-				</InfiniteRotateGreen>
+				
 				</div>
 			</div>
 			

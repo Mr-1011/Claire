@@ -2,17 +2,18 @@
 .dashboard_wrapper > div {
     animation: moveroad 500ms linear infinite;
   }
+
   
   .traffic {
     animation: movetraffic 4s linear;
   }
   .child{
-    animation: movechild 4s linear;
+    animation: movechild 10s linear;
   }
   
   @keyframes moveroad {
     0% {
-      transform: translateY(-20px);
+      transform: translateY(-30px);
     }
   
     100% {
@@ -34,8 +35,8 @@
 
   @keyframes movechild {
     0% {
-      left: 26px;
-      top: 4rem;
+      left: 100px;
+      top: 15rem;
     }
   
     100% {
@@ -43,4 +44,16 @@
       top: 19rem;
     }
   }
+  .slowroad > div{
+    animation: moveroadslow 500ms linear infinite;
+  }
   
+  @keyframes moveroadslow {
+    0% {
+      transform: translateY(-15px);
+    }
+  
+    100% {
+      transform: translateY(-10px);
+    }
+  }

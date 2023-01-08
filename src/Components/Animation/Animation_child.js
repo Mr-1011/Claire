@@ -30,6 +30,10 @@ function Animation_child() {
       setTimeout(() => {
         setStopRoad(true);
       }, 4000);
+      setTimeout(()=>{
+        setShowChild(false);
+        setStopRoad(false);
+      },10000)
     }, Math.random() * 4 * 2500);
     return () => {
       window.clearTimeout(showChild);
@@ -52,7 +56,7 @@ function Animation_child() {
                     <img src={Child} />
                 </TrafficWrapper>
                 )}
-                <RoadWrapper className={stopRoad ? "" : "dashboard_wrapper"}>
+                <RoadWrapper className={stopRoad ? "slowroad" : "dashboard_wrapper"}>
                 <Road></Road>
                 <Road></Road>
                 <Road></Road>
