@@ -136,7 +136,7 @@ left: 50%;
 			<div style={{height:100}}></div>
 			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
 			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
-			<h4 style={{color:""+color+"", border:"1px solid "+color+""}}>>{showNotification ? notifications :<br></br>}</h4>
+			<h4 style={{color:""+color+"", border:"1px solid "+color+""}}>{showNotification ? notifications :<br></br>}</h4>
 	        
 	        <div className="meter meter--speed">
 
