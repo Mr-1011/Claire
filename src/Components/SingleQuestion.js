@@ -3,6 +3,7 @@ import '../App.css';
 import ClaireGif from '../img/Claire.gif'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
+import Profile from './Profile';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 8,
@@ -26,35 +27,41 @@ function SingleQuestion() {
     {
       questionText: 'How long have you had your license for?',
       answerOptions: [
-        { answerText: '2 years', answerPoints: 1 },
-        { answerText: '5 years', answerPoints: 2 },
-        { answerText: '10 years', answerPoints: 3 },
-        { answerText: '20 years or more', answerPoints: 4 },
+        { answerText: 'less than 2 years', answerPoints: 0 },
+        { answerText: '2-5 years', answerPoints: 3 },
+        { answerText: '5 years or more', answerPoints: 5 },
       ],
     },
     {
-      questionText: 'Who is CEO of Tesla?',
+      questionText: 'How many years have you been driving?',
       answerOptions: [
-        { answerText: 'Jeff Bezos', answerPoints: 1 },
-        { answerText: 'Elon Musk', answerPoints: 2 },
-        { answerText: 'Bill Gates', answerPoints: 3 },
+        { answerText: 'less than 2 years', answerPoints: 0 },
+        { answerText: '2-5 years', answerPoints: 3 },
+        { answerText: '5 years or more', answerPoints: 5 },
       ],
     },
     {
-      questionText: 'Question 1',
+      questionText: 'How many times you drive per week?',
       answerOptions: [
-        { answerText: 'A', answerPoints: 1 },
-        { answerText: 'B', answerPoints: 2 },
-        { answerText: 'C', answerPoints: 3 },
+        { answerText: 'less than 2 times', answerPoints: 0 },
+        { answerText: '2-5 times', answerPoints: 3 },
+        { answerText: '5 times or more', answerPoints: 5 },
       ],
     },
     {
-      questionText: 'Question 2',
+      questionText: 'Have you already had experience with a AD?',
       answerOptions: [
-        { answerText: 'A', answerPoints: 1 },
-        { answerText: 'B', answerPoints: 2 },
-        { answerText: 'C', answerPoints: 3 },
-        { answerText: 'D', answerPoints: 3 },
+        { answerText: 'None or very litte', answerPoints: 0 },
+        { answerText: 'Basic knowledge', answerPoints: 3 },
+        { answerText: 'Advanced knowledge', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'Do you have any knowledge of AD/DL?',
+      answerOptions: [
+        { answerText: 'None or very litte', answerPoints: 0 },
+        { answerText: 'Basic knowledge', answerPoints: 3 },
+        { answerText: 'Advanced knowledge', answerPoints: 5 },
       ],
     }
   ];
@@ -62,6 +69,7 @@ function SingleQuestion() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [showSection, setshowSection] = useState(true)
 
   const handleAnswerOptionClick = (answerPoints) => {
     setScore(score + answerPoints);
@@ -71,28 +79,36 @@ function SingleQuestion() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      //what happens after the questions are finished
+      setshowSection(false);
     }
   };
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <BorderLinearProgress variant="determinate" value={progress} />
-      <div style={{ display: "flex", margin: "30px 0px 0px 50px" }}>
-        <div className='morph__div__small'>
-          {questions[currentQuestion].questionText}
-          <div style={{ position: "absolute", bottom: "10px", right: "50%", transform: "translate(50%,0)" }}>
-            <img alt={"..."} src={ClaireGif} style={{ width: "100px", height: "100", borderRadius: "100%" }}></img>
+      {showSection ? (
+        <div>
+          <BorderLinearProgress variant="determinate" value={progress} />
+          <div style={{ display: "flex", margin: "30px 0px 0px 50px" }}>
+            <div className='morph__div__small'>
+              {questions[currentQuestion].questionText}
+              <div style={{ position: "absolute", bottom: "10px", right: "50%", transform: "translate(50%,0)" }}>
+                <img alt={"..."} src={ClaireGif} style={{ width: "100px", height: "100", borderRadius: "100%" }}></img>
+              </div>
+            </div>
+            <div style={{ width: "800px" }}>
+              {questions[currentQuestion].answerOptions.map((answerOption) => (
+                <button className='morph__button' style={{ margin: "0px 0px 50px 35px" }} onClick={() => handleAnswerOptionClick(answerOption.answerPoints)}>
+                  {answerOption.answerText}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-        <div style={{ width: "800px" }}>
-          {questions[currentQuestion].answerOptions.map((answerOption) => (
-            <button className='morph__button' style={{ margin: "0px 0px 50px 35px" }} onClick={() => handleAnswerOptionClick(answerOption.answerPoints)}>
-              {answerOption.answerText}
-            </button>
-          ))}
+      ) : (
+        <div>
+          <Profile />
         </div>
-      </div>
+      )}
     </div>
   )
 }
