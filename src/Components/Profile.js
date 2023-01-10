@@ -3,15 +3,11 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import Interface from './Interface';
 
-function Profile() {
+function Profile({ score }) {
   return (
     <div>
 
-      <Link to='/question'>
-        <button className='button__next'>
-          back
-        </button>
-      </Link>
+      Your score is {score}
 
       <Link to='/speedometer'>
         <button className='button__next'>

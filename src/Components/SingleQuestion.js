@@ -106,7 +106,7 @@ function SingleQuestion() {
         </div>
       ) : (
         <div>
-          <Profile />
+          <Profile score={score} />
         </div>
       )}
     </div>
