@@ -57,7 +57,7 @@ function play(){
 //the useEffect code is executed when the traffic light appears or the car stops
 useEffect(() =>{
 	
-	showlevel(level);
+	
 	if(dataFromParent.dataFromParent.traffic==true){
 		setBeta(60);
 		setAcceleration(0);
@@ -73,9 +73,17 @@ useEffect(() =>{
 			play();
 		}
 	}
+	else{
+		setBeta(180);
+		setAnimationtime(10);
+		setNotifications("Set speed to 120 km/h")
+		setColor("green");
+	}
 	if(dataFromParent.dataFromParent.stop==true){
-		setAlpha(60);
-		
+		setAlpha(60);	
+	}
+	else{
+		setAlpha(startspeed)
 	}
 
 },[dataFromParent.dataFromParent.traffic, dataFromParent.dataFromParent.stop])

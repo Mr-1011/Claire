@@ -9,7 +9,8 @@ import {
 } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
-import Speedometer from "../speedometer/speedometer";
+//import Speedometer from "../speedometer/speedometer";
+import Speedometer from "../testfield/Speedometer";
 import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
 import VibrationOutlinedIcon from '@mui/icons-material/VibrationOutlined';
@@ -23,6 +24,7 @@ function Animation() {
   const [stopRoad, setStopRoad] = useState(false);
   const [iconcolor, seticonColor] = useState("green");
   
+  /*
   React.useEffect(() => {
     const showTraffic = setTimeout(() => {
       setShowTraffic(true);
@@ -35,6 +37,28 @@ function Animation() {
       window.clearTimeout(showTraffic);
     };
   }, []);
+  */
+  React.useEffect(() => {
+    let timers: any = [];
+    function loop() {
+      const randomTime = 2000;
+      setStopRoad(false);
+      setShowTraffic(false);
+      setTimeout(() => {
+        setShowTraffic(true);
+        seticonColor("red");
+        setTimeout(() => {
+          setStopRoad(true);
+          setTimeout(loop, randomTime + 4000 + 2000);
+        }, 4000);
+      }, randomTime);
+    }
+    loop();
+    return () => {
+      window.clearTimeout(timers[0]);
+    };
+  }, []);
+
 
   return (
     
@@ -44,11 +68,7 @@ function Animation() {
             <VibrationOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>
         </Grid>
         <Grid item xs={4}>
-            <Link to='/speedometer'>
-            <button style={{color:"white",background:"black",borderColor:"black"}}>
-              next scenario
-            </button>
-            </Link>
+            
             <Dashboard>
             <img src={Car_Img} />
             <DashboardWrapper>
