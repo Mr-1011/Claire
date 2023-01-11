@@ -8,12 +8,13 @@ import notification from "./notification.mp3";
 import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
+import { SpeedometerWrapper } from "../testfield/SpeedometerWrapper";
 
 function Speedometer(dataFromParent){
 
 // set the start scenario: startspeed and delta t (time horizon predicition)
 
-const startspeed = 100;
+const startspeed = 0;
 let predicition_horizon = 5;
 
 // acceleration can change over time, that's why it is a UseState
@@ -22,11 +23,14 @@ let predicition_horizon = 5;
 // notifications show the current status and alarms in the dashboard
 // animationtime and audiocounter exist to make the animation more stable
 const [acceleration,setAcceleration] = useState(1.5);
-const [alpha,setAlpha] = useState(160);
+const [alpha,setAlpha] = useState(60);
 const [beta,setBeta] = useState(180);
 const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
+const [speed,setSpeed] = useState(0);
+const [speed1, setSpeed1] = useState(0);
+const [start, setStart] = useState(150);
 
 const [level, setLevel] = useState(0);
 const [showSpeed, setShowSpeed] = useState(true);
@@ -34,6 +38,8 @@ const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
 const [showGif, setShowGif] = useState(false);
 const [color, setColor] = useState("green");
+
+
 
 function showlevel(level){
 	if(level==2){
@@ -55,6 +61,21 @@ function play(){
 	setAudiocounter(1);
 }
 
+//vector graphics
+
+const size = 475;
+const strokeWidth = 30;
+// startangle = 150 means alpha = 60
+const startAngle = 150;
+// basic calculations to add the stroke
+const radius = (size - strokeWidth) / 2;
+const circumference = 2 * Math.PI * radius;
+const strokeDashoffset = circumference - (speed) * circumference;
+console.log(strokeDashoffset)
+//const [strokeDashoffset, setStrokeDataoffset] = useState(circumference - ((180-160)*100/360) * circumference)
+
+
+
 //the useEffect code is executed when the traffic light appears or the car stops
 useEffect(() =>{
 	
@@ -62,12 +83,19 @@ useEffect(() =>{
 	if(dataFromParent.dataFromParent.traffic==true){
 		setAlpha(180);
 		setBeta(60);
+		setStart(150);
+
+		setSpeed(0);
 		
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
 		setNotifications("Red light detected")
 		setColor("red");
+		
+		/*setTimeout(()=>{
+			setSpeed(-0.33);
+			setStart(270);},4000);*/
 		if(audiocounter==0&&showAudio==true){
 			setShowGif(true);
 			setTimeout(() => {
@@ -84,26 +112,28 @@ useEffect(() =>{
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
 		setColor("green");
+		setSpeed(0.33);
+		/*setTimeout(()=>{
+			setSpeed(-0.33);
+			setStart(150);},10000);*/
+	
+		
+
 	}
 	if(dataFromParent.dataFromParent.stop==true){
-		setAlpha(60);	
+		setAlpha(60);
+			
 	}
 	
+	 // speed = 0 means 0 degree ciricle, speed = 100 means full 360
+  // calculate the progress to show stroke width in simple word
+  //setStrokeDataoffset(circumference - ((beta-alpha)*100/360) * circumference);
 
 },[dataFromParent.dataFromParent.traffic, dataFromParent.dataFromParent.stop])
 
 
 
 
-//calculate the speed continiously and update the needle
-//speed(t) = startspeed+t*acceleration
-//predicted_speed = speed * Time_horizon* acceleration
-
-const setPred_Speed = (acceleration,startspeed,predicition_horizon) => {
-	let speed = startspeed+predicition_horizon*acceleration+60;
-	setBeta(speed+60);
-	return speed;
-}
 
 //animation for red needle (current speed)
 const rotate = keyframes`
@@ -118,24 +148,47 @@ position: absolute;
 top: 50%;
 left: 50%;
 `
-
-
+const accelerate = keyframes`
+0% {
+  stroke dashoffset:936.6658496677967;
+}
+100% {
+	stroke-dashoffset:0;
+}
+`
 
 
     return(
         <div className="engine">
-        <div className="head">
-	        <h1>Engine simulator</h1>
-        </div>
-
+        
+		
         <div className="dashboard">
 			<div style={{height:150}}></div>
 			<div style={{color:"white"}}>
 			<h2 style={{color:""+color+"", border:"1px solid "+color+""}}>{showNotification ? notifications :<br></br>}</h2>
 	        </div>
 	        <div className="meter meter--speed">
-
-			
+				
+				<svg  width={size} height={size} className="svg">
+				<circle
+				cx={size / 2}
+				cy={size / 2}
+				r={radius}
+				stroke={"#582ced"}
+				strokeWidth={20}
+				fill="transparent"
+				strokeDasharray={circumference}
+				// this attribute is to set the svg start and end
+				strokeDashoffset={strokeDashoffset}
+				style={{
+					transformOrigin: "center",
+					transform: `rotate(${start}deg)`,
+					strokeDashoffset,
+					transition: `all ${animationtime}s linear`,
+				}}
+				/>
+      			</svg>
+			  	
 
 				<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 			

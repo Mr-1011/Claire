@@ -23,7 +23,7 @@ function Speedometer(dataFromParent){
       setSpeed(0);
     }
     else{
-      setSpeed(30);
+      setSpeed(33);
     }
 
 
@@ -33,7 +33,7 @@ function Speedometer(dataFromParent){
   return (
     <div>
       <img src={Speedometer_Img} />
-      <svg>
+      <svg width={size} height={size}>
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -48,7 +48,7 @@ function Speedometer(dataFromParent){
             transformOrigin: "center",
             transform: `rotate(${startAngle + 150}deg)`,
             strokeDashoffset,
-            transition: "all 1s linear",
+            transition: "all 3s linear",
           }}
         />
       </svg>
