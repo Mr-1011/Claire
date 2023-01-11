@@ -22,13 +22,16 @@ let predicition_horizon = 5;
 // notifications show the current status and alarms in the dashboard
 // animationtime and audiocounter exist to make the animation more stable
 const [acceleration,setAcceleration] = useState(1.5);
-const [alpha,setAlpha] = useState(startspeed+60);
+const [alpha,setAlpha] = useState(90);
 const [beta,setBeta] = useState(180);
 const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
+const [speed,setSpeed] = useState(-0.25);
+const [speed1, setSpeed1] = useState(0);
+const [start, setStart] = useState(270);
 
-const [level, setLevel] = useState(4);
+const [level, setLevel] = useState(1);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
@@ -55,36 +58,67 @@ function play(){
 	setAudiocounter(1);
 }
 
+const size = 475;
+const strokeWidth = 30;
+// startangle = 150 means alpha = 60
+const startAngle = 150;
+// basic calculations to add the stroke
+const radius = (size - strokeWidth) / 2;
+const circumference = 2 * Math.PI * radius;
+const strokeDashoffset = circumference - (speed) * circumference;
+console.log(strokeDashoffset)
+//const [strokeDashoffset, setStrokeDataoffset] = useState(circumference - ((180-160)*100/360) * circumference)
+
+
 //the useEffect code is executed when the traffic light appears or the car stops
 useEffect(() =>{
-	console.log(beta);
-	console.log(alpha);
+	
+	showlevel(level);
 	if(dataFromParent.dataFromParent.child==true){
+		
+		
 		setBeta(90);
+		setStart(180);
+		setSpeed(0);
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
+		setNotifications("Attention unpredictable object ahead")
 		setColor("red");
-		setNotifications("Red light detected")
+		
+		/*setTimeout(()=>{
+			setSpeed(-0.33);
+			setStart(270);},4000);*/
 		if(audiocounter==0&&showAudio==true){
 			setShowGif(true);
 			setTimeout(() => {
 				setShowGif(false);
 			  }, 7000);
 			play();
+			setTimeout(()=>{
+				setAudiocounter(0)},4000);
 		}
+		
 	}
 	else{
 		setBeta(180);
-		setNotifications("set speed to 120 kmh");
 		setAnimationtime(10);
-		
+		setNotifications("Set speed to 120 km/h")
+		setColor("green");
+		setSpeed(0);
+		setTimeout(()=>{
+			setAnimationtime(0.5);
+			setSpeed(0.25);
+			setStart(180);
+			setAlpha(180);},11500);
 	}
 	if(dataFromParent.dataFromParent.stop==true){
-		setAlpha(beta);
-		
-	}
-	
+		setAlpha(90);
+		setAnimationtime(1);
+		setTimeout(()=>{
+			setSpeed(-0.25);
+			setStart(270);},3000);
+		}		
 
 },[dataFromParent.dataFromParent.child, dataFromParent.dataFromParent.stop])
 
@@ -106,6 +140,7 @@ to {
 
 const InfiniteRotate = styled.div`
 animation: ${rotate} ${animationtime}s linear;
+animation-fill-mode: forwards;
 position: absolute;
 top: 50%;
 left: 50%;
@@ -133,12 +168,32 @@ left: 50%;
         </div>
 
         <div className="dashboard">
-			<div style={{height:100}}></div>
-			<h4 style={{color:"white"}}>current_speed: {startspeed} m/s</h4>
-			<h4 style={{color:"white"}}>speed in 5 seconds: {beta-60}m/s</h4>
-			<h4 style={{color:""+color+"", border:"1px solid "+color+""}}>{showNotification ? notifications :<br></br>}</h4>
+			<div style={{height:150}}></div>
+			
+			<h4 style={{color:""+color+"", border:"1px solid "+color+""}}>{notifications}</h4>
 	        
 	        <div className="meter meter--speed">
+
+			<svg  width={size} height={size} className="svg">
+				<circle
+				cx={size / 2}
+				cy={size / 2}
+				r={radius}
+				stroke={"#582ced"}
+				strokeWidth={20}
+				fill="transparent"
+				strokeDasharray={circumference}
+				// this attribute is to set the svg start and end
+				strokeDashoffset={strokeDashoffset}
+				style={{
+					transformOrigin: "center",
+					transform: `rotate(${start}deg)`,
+					strokeDashoffset,
+					//animation: `${accelerate} ${animationtime}s linear`,
+					transition: `all ${animationtime}s linear`,
+				}}
+				/>
+      		</svg>
 
 			<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 
@@ -179,7 +234,7 @@ left: 50%;
 
 				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 				
-					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
+					<div className="needle" style={{background:"#00FF00"}}></div>
 				
 				</div>
 			</div>

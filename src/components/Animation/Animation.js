@@ -42,7 +42,7 @@ function Animation() {
   
   React.useEffect(() => {
     let timers: any = [];
-    const car_running_time = 10000;
+    const car_running_time = 12000;
     const traffic_delay = 4000;
     const restart_loop_delay = 4000;
 
@@ -101,7 +101,6 @@ function Animation() {
         </Grid>
         <Grid item xs={4}>
             <Batterystatus/>
-          
               <Grid container direction="column">
                 <Grid item>
                 <AirlineSeatReclineExtraOutlinedIcon style={{height:100,width:100,color:iconcolor}}/>

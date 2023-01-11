@@ -81,7 +81,8 @@ useEffect(() =>{
 	
 	showlevel(level);
 	if(dataFromParent.dataFromParent.traffic==true){
-		setAlpha(180);
+		
+		
 		setBeta(60);
 		setStart(150);
 		setSpeed(0);
@@ -112,13 +113,10 @@ useEffect(() =>{
 		setColor("green");
 		setSpeed(0);
 		setTimeout(()=>{
-			setAnimationtime(0.1);
+			setAnimationtime(0.5);
 			setSpeed(0.33);
-			setStart(150);},9900);
-		
-	
-		
-
+			setStart(150);
+			setAlpha(150);},11500);
 	}
 	if(dataFromParent.dataFromParent.stop==true){
 		setAlpha(60);
@@ -148,11 +146,20 @@ to {
 
 const InfiniteRotate = styled.div`
 animation: ${rotate} ${animationtime}s linear;
+animation-fill-mode: forwards;
 position: absolute;
 top: 50%;
 left: 50%;
 `
 const accelerate = keyframes`
+0% {
+  stroke dashoffset:- 936.6658496677967;
+}
+100% {
+	stroke-dashoffset:0;
+}
+`
+const brake = keyframes`
 0% {
   stroke dashoffset:936.6658496677967;
 }
@@ -188,6 +195,7 @@ const accelerate = keyframes`
 					transformOrigin: "center",
 					transform: `rotate(${start}deg)`,
 					strokeDashoffset,
+					//animation: `${accelerate} ${animationtime}s linear`,
 					transition: `all ${animationtime}s linear`,
 				}}
 				/>

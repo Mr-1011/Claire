@@ -21,7 +21,7 @@ function Animation_child() {
   const [showChild, setShowChild] = useState(false);
   const [stopRoad, setStopRoad] = useState(false);
   const [iconcolor, seticonColor] = useState("green");
-  
+  /*
   React.useEffect(() => {
     const showChild = setTimeout(() => {
       setShowChild(true);
@@ -37,6 +37,36 @@ function Animation_child() {
     }, Math.random() * 4 * 2500);
     return () => {
       window.clearTimeout(showChild);
+    };
+  }, []);
+  */
+  React.useEffect(() => {
+    let timers: any = [];
+    const car_running_time = 12000;
+    const traffic_delay = 4000;
+    const restart_loop_delay = 4000;
+
+    function loop() {
+      // when loop reset
+      setStopRoad(false);
+      setShowChild(false);
+
+      setTimeout(() => {
+        // appear traffic light
+        setShowChild(true);
+        seticonColor("red");
+        setTimeout(() => {
+          // stop road after 4s (traffic light animation needs 4s)
+          setStopRoad(true);
+
+          // restart loop
+          setTimeout(loop, restart_loop_delay);
+        }, traffic_delay);
+      }, car_running_time);
+    }
+    loop();
+    return () => {
+      window.clearTimeout(timers[0]);
     };
   }, []);
 
