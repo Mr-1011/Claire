@@ -28,9 +28,9 @@ const [beta,setBeta] = useState(180);
 const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
-const [speed,setSpeed] = useState(0);
+const [speed,setSpeed] = useState(-0.33);
 const [speed1, setSpeed1] = useState(0);
-const [start, setStart] = useState(150);
+const [start, setStart] = useState(270);
 
 const [level, setLevel] = useState(0);
 const [showSpeed, setShowSpeed] = useState(true);
@@ -84,9 +84,7 @@ useEffect(() =>{
 		setAlpha(180);
 		setBeta(60);
 		setStart(150);
-
 		setSpeed(0);
-		
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
@@ -112,16 +110,22 @@ useEffect(() =>{
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
 		setColor("green");
-		setSpeed(0.33);
-		/*setTimeout(()=>{
-			setSpeed(-0.33);
-			setStart(150);},10000);*/
+		setSpeed(0);
+		setTimeout(()=>{
+			setAnimationtime(0.1);
+			setSpeed(0.33);
+			setStart(150);},9900);
+		
 	
 		
 
 	}
 	if(dataFromParent.dataFromParent.stop==true){
 		setAlpha(60);
+		setAnimationtime(1);
+		setTimeout(()=>{
+			setSpeed(-0.33);
+			setStart(270);},3000);
 			
 	}
 	

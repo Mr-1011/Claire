@@ -4,9 +4,7 @@ import "./engine.scss";
 export default function batterystatus() {
   return (
     <div className="engine">
-        <div className="head">
-	        <h1>Engine simulator</h1>
-        </div>
+        
 
         <div className="dashboard">
             <div style={{height:150}}></div>
