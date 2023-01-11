@@ -8,6 +8,7 @@ import notification from "./notification.mp3";
 import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
+
 function Speedometer(dataFromParent){
 
 // set the start scenario: startspeed and delta t (time horizon predicition)
@@ -21,7 +22,7 @@ let predicition_horizon = 5;
 // notifications show the current status and alarms in the dashboard
 // animationtime and audiocounter exist to make the animation more stable
 const [acceleration,setAcceleration] = useState(1.5);
-const [alpha,setAlpha] = useState(startspeed+60);
+const [alpha,setAlpha] = useState(160);
 const [beta,setBeta] = useState(180);
 const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
@@ -57,9 +58,11 @@ function play(){
 //the useEffect code is executed when the traffic light appears or the car stops
 useEffect(() =>{
 	
-	
+	showlevel(level);
 	if(dataFromParent.dataFromParent.traffic==true){
+		setAlpha(180);
 		setBeta(60);
+		
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
@@ -71,7 +74,10 @@ useEffect(() =>{
 				setShowGif(false);
 			  }, 4000);
 			play();
+			setTimeout(()=>{
+				setAudiocounter(0)},4000);
 		}
+		
 	}
 	else{
 		setBeta(180);
@@ -82,9 +88,7 @@ useEffect(() =>{
 	if(dataFromParent.dataFromParent.stop==true){
 		setAlpha(60);	
 	}
-	else{
-		setAlpha(startspeed)
-	}
+	
 
 },[dataFromParent.dataFromParent.traffic, dataFromParent.dataFromParent.stop])
 
@@ -114,30 +118,10 @@ position: absolute;
 top: 50%;
 left: 50%;
 `
-//animation for predicted speed (green needle)
-/*
-const rotate_green = keyframes`
-to {
-  transform: rotate(${(beta+acceleration*predicition_horizon)-beta}deg);
-}
-`
 
-const InfiniteRotateGreen = styled.div`
-animation: ${rotate_green} ${animationtime}s linear infinite;
-position: absolute;
-top: 50%;
-left: 50%;
-`
-*/
 
-//not working function
-/*
-InfiniteRotate.addEventListener("animationend", myEndFunction);
 
-function myEndFunction(){
-	console.log("called");
-}
-*/
+
     return(
         <div className="engine">
         <div className="head">
@@ -151,6 +135,7 @@ function myEndFunction(){
 	        </div>
 	        <div className="meter meter--speed">
 
+			
 
 				<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 			

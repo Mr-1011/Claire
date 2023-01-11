@@ -20,7 +20,10 @@ function Speedometer(dataFromParent){
 
   useEffect(()=>{
     if(dataFromParent.dataFromParent.traffic==true){
-      setSpeed(10);
+      setSpeed(0);
+    }
+    else{
+      setSpeed(30);
     }
 
 
@@ -30,7 +33,7 @@ function Speedometer(dataFromParent){
   return (
     <div>
       <img src={Speedometer_Img} />
-      <svg width={size} height={size}>
+      <svg>
         <circle
           cx={size / 2}
           cy={size / 2}

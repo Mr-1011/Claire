@@ -9,8 +9,8 @@ import {
 } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
-//import Speedometer from "../speedometer/speedometer";
-import Speedometer from "../testfield/Speedometer";
+import Speedometer from "../speedometer/speedometer";
+//import Speedometer from "../testfield/Speedometer";
 import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
 import VibrationOutlinedIcon from '@mui/icons-material/VibrationOutlined';
@@ -37,27 +37,39 @@ function Animation() {
       window.clearTimeout(showTraffic);
     };
   }, []);
-  */
+  
+*/
+  
   React.useEffect(() => {
     let timers: any = [];
+    const car_running_time = 10000;
+    const traffic_delay = 4000;
+    const restart_loop_delay = 4000;
+
     function loop() {
-      const randomTime = 2000;
+      // when loop reset
       setStopRoad(false);
       setShowTraffic(false);
+
       setTimeout(() => {
+        // appear traffic light
         setShowTraffic(true);
         seticonColor("red");
         setTimeout(() => {
+          // stop road after 4s (traffic light animation needs 4s)
           setStopRoad(true);
-          setTimeout(loop, randomTime + 4000 + 2000);
-        }, 4000);
-      }, randomTime);
+
+          // restart loop
+          setTimeout(loop, restart_loop_delay);
+        }, traffic_delay);
+      }, car_running_time);
     }
     loop();
     return () => {
       window.clearTimeout(timers[0]);
     };
   }, []);
+
 
 
   return (
