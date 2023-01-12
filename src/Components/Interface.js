@@ -36,13 +36,13 @@ function Interface({ children }) {
         </Grid>
         <Grid item xs={11}>
           <div style={{ position: "relative", alignItems: "center", backgroundColor: "#24272C", width: "1265px", height: "620px", borderRadius: "36px" }}>
-            <div style={{ margin: "auto", width: "1200px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ margin: "auto", width: "1150px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
                 <AccountCircleIcon sx={{ fontSize: 40, marginRight: 3 }} />
-                <input type="text" placeholder="Search..." className="search"></input>
+                <input type="text" placeholder="Search..." className="search" ></input>
               </div>
 
-              <div style={{ width: "220px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ width: "220px", display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "15px" }}>
                 <WifiIcon sx={{ fontSize: 40 }} />
                 <h2>21°</h2>
                 <h2 style={{ marginRight: "20px" }}>22:10</h2>
@@ -52,30 +52,29 @@ function Interface({ children }) {
 
 
 
-            <div className="morph__div">
-              {children}
-            </div>
+            {children}
+
 
 
 
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{ backgroundColor: "#484D55", position: "absolute", bottom: "0", width: "1200px", height: "88px", borderRadius: "24px 24px 0px 0px" }}>
+              <div style={{ backgroundColor: "#484D55", position: "absolute", bottom: "0", width: "1150px", height: "88px", borderRadius: "24px 24px 0px 0px" }}>
                 <div style={{ width: "90%", margin: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "15px" }}>
                   <input type="range" min="1" max="100" value="50" className="slider" id="myRange"></input>
-                  <button className='morph__button'>
+                  <button className='morph__button__round'>
                     AUTO
                   </button>
-                  <button className='morph__button'>
+                  <button className='morph__button__round'>
                     <GppMaybeIcon />
                   </button>
-                  <button className='morph__button'>
+                  <button className='morph__button__round'>
                     <GppMaybeIcon />
                   </button>
-                  <button className='morph__button'>
+                  <button className='morph__button__round'>
                     <GppMaybeIcon />
                   </button>
-                  <button className='morph__button'>
+                  <button className='morph__button__round'>
                     <GppMaybeIcon />
                   </button>
                   <input type="range" min="1" max="100" value="50" className="slider" id="myRange"></input>
