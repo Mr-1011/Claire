@@ -1,5 +1,25 @@
 import React, { useState } from 'react';
-import '../SingleQuestion.css';
+import '../App.css';
+import ClaireGif from '../img/Claire.gif'
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { styled } from '@mui/material/styles';
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 8,
+  borderRadius: 5,
+  width: '1150px',
+  margin: 'auto',
+  colorPrimary: '#582CED',
+  backgroundColor: '#242528',
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: 'white',
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: '#582CED',
+  },
+}));
+
 
 function SingleQuestion() {
   const questions = [
@@ -18,46 +38,61 @@ function SingleQuestion() {
         { answerText: 'Jeff Bezos', answerPoints: 1 },
         { answerText: 'Elon Musk', answerPoints: 2 },
         { answerText: 'Bill Gates', answerPoints: 3 },
-        { answerText: 'Bill Gates', answerPoints: 4 },
+      ],
+    },
+    {
+      questionText: 'Question 1',
+      answerOptions: [
+        { answerText: 'A', answerPoints: 1 },
+        { answerText: 'B', answerPoints: 2 },
+        { answerText: 'C', answerPoints: 3 },
+      ],
+    },
+    {
+      questionText: 'Question 2',
+      answerOptions: [
+        { answerText: 'A', answerPoints: 1 },
+        { answerText: 'B', answerPoints: 2 },
+        { answerText: 'C', answerPoints: 3 },
+        { answerText: 'D', answerPoints: 3 },
       ],
     }
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const handleAnswerOptionClick = (answerPoints) => {
     setScore(score + answerPoints);
     const nextQuestion = currentQuestion + 1;
+    setProgress(progress + 100 / questions.length);
+
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowScore(true);
+      //what happens after the questions are finished
     }
   };
 
   return (
-    <div className='app'>
-      {showScore ? (
-        <div className='score-section'>
-          You scored {score} out of {questions.length}
+    <div style={{ marginTop: "20px" }}>
+      <BorderLinearProgress variant="determinate" value={progress} />
+      <div style={{ display: "flex", margin: "30px 0px 0px 50px" }}>
+        <div className='morph__div__small'>
+          {questions[currentQuestion].questionText}
+          <div style={{ position: "absolute", bottom: "10px", right: "50%", transform: "translate(50%,0)" }}>
+            <img alt={"..."} src={ClaireGif} style={{ width: "100px", height: "100", borderRadius: "100%" }}></img>
+          </div>
         </div>
-      ) : (
-        <>
-          <div className='question-section'>
-            <div className='question-count'>
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </div>
-            <div className='question-text'>{questions[currentQuestion].questionText}</div>
-          </div>
-          <div className='answer-section'>
-            {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button className='question-button' onClick={() => handleAnswerOptionClick(answerOption.answerPoints)}>{answerOption.answerText}</button>
-            ))}
-          </div>
-        </>
-      )}
+        <div style={{ width: "800px" }}>
+          {questions[currentQuestion].answerOptions.map((answerOption) => (
+            <button className='morph__button' style={{ margin: "0px 0px 50px 35px" }} onClick={() => handleAnswerOptionClick(answerOption.answerPoints)}>
+              {answerOption.answerText}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
