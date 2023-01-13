@@ -6,6 +6,10 @@ import Profile from './Components/Profile'
 import Animation from './Components/Animation/Animation';
 import Animation_child from './Components/Animation/Animation_child';
 import Speedometer from './Components/speedometer/speedometer';
+import Level1 from './Components/Level1'
+import Level2 from './Components/Level2'
+import Level3 from './Components/Level3'
+import Level4 from './Components/Level4'
 
 
 function App() {
@@ -30,6 +34,18 @@ function App() {
           } />
           <Route path='/pie' element={
             <Speedometer />
+          } />
+           <Route path='/level1' element={
+            <Level1 />
+          } />
+          <Route path='/level2' element={
+            <Level2 />
+          } />
+          <Route path='/level3' element={
+            <Level3 />
+          } />
+          <Route path='/level4' element={
+            <Level4 />
           } />
         </Routes>
       </Router>

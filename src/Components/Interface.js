@@ -9,7 +9,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import WifiIcon from '@mui/icons-material/Wifi';
-import GppMaybeIcon from '@mui/icons-material/GppMaybe';
+import Slider from '@mui/material/Slider';
+import Climate1 from '../img/Climate1.svg';
+import Climate2 from '../img/Climate2.svg';
+import Climate3 from '../img/Climate3.svg';
 
 function Interface({ children }) {
   return (
@@ -50,42 +53,41 @@ function Interface({ children }) {
             </div>
 
 
-
-
             {children}
-
-
-
 
 
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div style={{ backgroundColor: "#484D55", position: "absolute", bottom: "0", width: "1150px", height: "88px", borderRadius: "24px 24px 0px 0px" }}>
                 <div style={{ width: "90%", margin: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "15px" }}>
-                  <input type="range" min="1" max="100" value="50" className="slider" id="myRange"></input>
+                  <Slider
+                    defaultValue={50}
+                    sx={{ width: 200, color: "#582CED" }}
+                  />
                   <button className='morph__button__round'>
                     AUTO
                   </button>
                   <button className='morph__button__round'>
-                    <GppMaybeIcon />
+                    A/C
                   </button>
                   <button className='morph__button__round'>
-                    <GppMaybeIcon />
+                    <img src={Climate1} />
                   </button>
                   <button className='morph__button__round'>
-                    <GppMaybeIcon />
+                    <img src={Climate2} />
                   </button>
                   <button className='morph__button__round'>
-                    <GppMaybeIcon />
+                    <img src={Climate3} />
                   </button>
-                  <input type="range" min="1" max="100" value="50" className="slider" id="myRange"></input>
+                  <Slider
+                    defaultValue={50}
+                    sx={{ width: 200, color: "#582CED" }}
+                  />
                 </div>
               </div>
             </div>
           </div>
         </Grid>
       </Grid>
-
-
     </div >
   )
 }
