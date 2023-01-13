@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Questions from './Components/Questions'
 import Start from './Components/Start'
 import Profile from './Components/Profile'
+import Animation from './Components/Animation/Animation';
+import Animation_child from './Components/Animation/Animation_child';
+import Speedometer from './Components/speedometer/speedometer';
 import Level1 from './Components/Level1'
 import Level2 from './Components/Level2'
 import Level3 from './Components/Level3'
@@ -24,7 +27,13 @@ function App() {
             <Profile />
           } />
           <Route path='/speedometer' element={
-            <h1>speedometer</h1>
+            <Animation />
+          } />
+          <Route path='/speedometer_child' element={
+            <Animation_child />
+          } />
+          <Route path='/pie' element={
+            <Speedometer />
           } />
            <Route path='/level1' element={
             <Level1 />
