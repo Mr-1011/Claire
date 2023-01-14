@@ -8,9 +8,9 @@ export default function batterystatus() {
         
 
         <div className="dashboard">
-			<Link to="/speedometer_child">
+			<Link to="/">
               <button className='button__next'>
-                Next
+				Back
               </button>
             </Link>
 			

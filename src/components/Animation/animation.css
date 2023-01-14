@@ -8,6 +8,18 @@
 .child {
   animation: movechild 10s linear;
 }
+.button__next {
+  margin: 20px;
+  width: 210px;
+  height: 50px;
+  border-radius: 9px;
+  border: none;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(225deg, #181818, #292d33);
+  box-shadow: -5px 5px 20px #191919,
+    5px -5px 20px #292929;
+}
 
 @keyframes moveroad {
   0% {
@@ -33,13 +45,13 @@
 
 @keyframes movechild {
   0% {
-    left: 100px;
-    top: 15rem;
+    left: 130px;
+    top: 20rem;
   }
 
   100% {
-    left: -32px;
-    top: 19rem;
+    left: -70px;
+    top: 35rem;
   }
 }
 .slowroad > div {

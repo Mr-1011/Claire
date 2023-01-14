@@ -416,3 +416,15 @@ h1 {
 	font-weight: normal;
 	text-transform: uppercase;
 }
+.button__next {
+	margin: 20px;
+	width: 210px;
+	height: 50px;
+	border-radius: 9px;
+	border: none;
+	font-size: 18px;
+	color: white;
+	background: linear-gradient(225deg, #181818, #292d33);
+	box-shadow: -5px 5px 20px #191919,
+	  5px -5px 20px #292929;
+  }

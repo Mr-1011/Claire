@@ -5,10 +5,12 @@ import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Child } from "../../assets/exports";
 import Speedometer_child from "../speedometer/speedometer_child";
-import Batterystatus from "../speedometer/batterystatus";
+import Batterystatus2 from "../speedometer/batterystatus2";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
+import { Link } from "react-router-dom";
+import { Box, Stack } from "@mui/material";
 
 //code from sirarifarid-fiverr
 //showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
@@ -17,6 +19,7 @@ function Animation_child() {
   const [showChild, setShowChild] = useState(false);
   const [stopRoad, setStopRoad] = useState(false);
   const [iconcolor, seticonColor] = useState("green");
+  const [vibration, setVibration] = useState("Off");
   /*
   React.useEffect(() => {
     const showChild = setTimeout(() => {
@@ -46,11 +49,13 @@ function Animation_child() {
       // when loop reset
       setStopRoad(false);
       setShowChild(false);
-
+      seticonColor("green");
+      setVibration("Off");
       setTimeout(() => {
         // appear traffic light
         setShowChild(true);
         seticonColor("red");
+        setVibration("On");
         setTimeout(() => {
           // stop road after 4s (traffic light animation needs 4s)
           setStopRoad(true);
@@ -67,16 +72,39 @@ function Animation_child() {
   }, []);
 
   return (
-    <Grid container column={2}>
-      <Grid item xs={4}>
+    <Stack
+      sx={{
+        overflow: "hidden",
+        maxWidth: 1100,
+        margin: "auto",
+        height: "100vh",
+        alignItems: "center",
+      }}
+      flexDirection={"row"}
+      justifyContent={"space-between"}
+    >
+      <Box
+        sx={{
+          width: "336px",
+          height: "600px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          scale: "0.6",
+        }}
+      >
         <Speedometer_child
           dataFromParent={{ child: showChild, stop: stopRoad }}
         />
+        <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>
         <VibrationOutlinedIcon
           style={{ height: 100, width: 100, color: iconcolor }}
         />
-      </Grid>
-      <Grid item xs={4}>
+      </Box>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
         <Dashboard>
           <img src={Car_Img} />
           <DashboardWrapper>
@@ -85,9 +113,7 @@ function Animation_child() {
                 <img src={Child} />
               </TrafficWrapper>
             )}
-            <RoadWrapper
-              className={stopRoad ? "slowroad" : "dashboard_wrapper"}
-            >
+            <RoadWrapper className={stopRoad ? "slowroad" : "dashboard_wrapper"}>
               <Road></Road>
               <Road></Road>
               <Road></Road>
@@ -95,14 +121,24 @@ function Animation_child() {
             </RoadWrapper>
           </DashboardWrapper>
         </Dashboard>
-      </Grid>
-      <Grid item xs={4}>
-        <Batterystatus />
-        <AirlineSeatReclineExtraOutlinedIcon
-          style={{ height: 100, width: 100, color: iconcolor }}
-        />
-      </Grid>
-    </Grid>
+      </Box>
+      <Box
+        sx={{
+          width: "336px",
+          scale: "0.6",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Batterystatus2 />
+        
+        <h2 style={{color:iconcolor}}>Seat vibration: {vibration}</h2>
+        
+        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }}/>
+      </Box>
+    </Stack>
   );
 }
 

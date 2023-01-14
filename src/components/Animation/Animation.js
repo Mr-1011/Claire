@@ -20,22 +20,9 @@ function Animation() {
   const [showTraffic, setShowTraffic] = useState(false);
   const [stopRoad, setStopRoad] = useState(false);
   const [iconcolor, seticonColor] = useState("green");
+  const [vibration, setVibration] = useState("Off");
 
-  /*
-  React.useEffect(() => {
-    const showTraffic = setTimeout(() => {
-      setShowTraffic(true);
-      seticonColor("red");
-      setTimeout(() => {
-        setStopRoad(true);
-      }, 4000);
-    }, Math.random() * 4 * 2500);
-    return () => {
-      window.clearTimeout(showTraffic);
-    };
-  }, []);
-  
-*/
+
 
   React.useEffect(() => {
     let timers = [];
@@ -47,11 +34,13 @@ function Animation() {
       // when loop reset
       setStopRoad(false);
       setShowTraffic(false);
-
+      seticonColor("green");
+      setVibration("Off");
       setTimeout(() => {
         // appear traffic light
         setShowTraffic(true);
         seticonColor("red");
+        setVibration("On");
         setTimeout(() => {
           // stop road after 4s (traffic light animation needs 4s)
           setStopRoad(true);
@@ -93,6 +82,7 @@ function Animation() {
         <Speedometer
           dataFromParent={{ traffic: showTraffic, stop: stopRoad }}
         />
+        <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>
         <VibrationOutlinedIcon
           style={{ height: 100, width: 100, color: iconcolor }}
         />
@@ -117,37 +107,23 @@ function Animation() {
           </DashboardWrapper>
         </Dashboard>
       </Box>
+      
       <Box
         sx={{
           width: "336px",
-          scale: "0.6",
+          height: "600px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          scale: "0.6",
         }}
       >
         <Batterystatus />
-        <Grid container direction="column">
-          <Grid item>
-            <AirlineSeatReclineExtraOutlinedIcon
-              style={{ height: 100, width: 100, color: iconcolor }}
-            />
-          </Grid>
-          <Grid item>
-            <Link to="/speedometer_child">
-              <button
-                style={{
-                  color: "white",
-                  background: "black",
-                  borderColor: "black",
-                }}
-              >
-                next scenario
-              </button>
-            </Link>
-          </Grid>
-        </Grid>
+        <h2 style={{color:iconcolor}}>Seat vibration: {vibration}</h2>
+        
+        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }}/>
+        
       </Box>
     </Stack>
   );

@@ -5,6 +5,7 @@ import Pie from "../testfield/pie";
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification from "./notification.mp3";
+import speed120 from "./120.mp3"
 import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
@@ -38,6 +39,7 @@ const [showAudio, setShowAudio] = useState(true);
 const [showNotification, setShowNotification] = useState(true);
 const [showGif, setShowGif] = useState(false);
 const [color, setColor] = useState("green");
+const [level1audio, setLevel1audio] = useState(true);
 
 
 
@@ -59,6 +61,10 @@ function showlevel(level){
 function play(){
 	new Audio(notification).play()
 	setAudiocounter(1);
+}
+function play120(){
+	new Audio(speed120).play()
+	
 }
 
 //vector graphics
@@ -107,6 +113,7 @@ useEffect(() =>{
 		
 	}
 	else{
+		play120();
 		setBeta(180);
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
@@ -117,6 +124,7 @@ useEffect(() =>{
 			setSpeed(0.33);
 			setStart(150);
 			setAlpha(180);},11500);
+		
 	}
 	if(dataFromParent.dataFromParent.stop==true){
 		setAlpha(60);
@@ -174,9 +182,11 @@ const brake = keyframes`
         
 		
         <div className="dashboard">
-			<div style={{height:150}}></div>
-			<div style={{color:"white"}}>
-			<h2 style={{color:""+color+"", border:"1px solid "+color+""}}>{showNotification ? notifications :<br></br>}</h2>
+			
+			<h2 style={{color:"green", fontFamily:"Arial"}}>Green Needle = Set speed by Claire</h2>
+			<h2 style={{color:"red", fontFamily:"Arial"}}>Red Needle = Current speed</h2>
+			<div style={{color:"white",}}>
+			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{showNotification ? notifications :<br></br>}</h2>
 	        </div>
 	        <div className="meter meter--speed">
 				

@@ -8,6 +8,7 @@ import notification_child from "./notification_child.mp3";
 import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
+import speed120 from "./120.mp3"
 
 function Speedometer(dataFromParent){
 
@@ -57,6 +58,10 @@ function play(){
 	new Audio(notification_child).play()
 	setAudiocounter(1);
 }
+function play120(){
+	new Audio(speed120).play()
+	
+}
 
 const size = 475;
 const strokeWidth = 30;
@@ -83,7 +88,7 @@ useEffect(() =>{
 		setAcceleration(0);
 		setAnimationtime(4);
 		//make sure audio is only played once
-		setNotifications("Attention unpredictable object ahead")
+		setNotifications("Unpredictable object")
 		setColor("red");
 		
 		/*setTimeout(()=>{
@@ -101,6 +106,7 @@ useEffect(() =>{
 		
 	}
 	else{
+		play120();
 		setBeta(180);
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
@@ -163,15 +169,14 @@ left: 50%;
 */
     return(
         <div className="engine">
-        <div className="head">
-	        <h1>Engine simulator</h1>
-        </div>
+        
 
         <div className="dashboard">
-			<div style={{height:150}}></div>
-			
-			<h4 style={{color:""+color+"", border:"1px solid "+color+""}}>{notifications}</h4>
-	        
+			<h2 style={{color:"green", fontFamily:"Arial"}}>Green Needle = Set speed by Claire</h2>
+			<h2 style={{color:"red", fontFamily:"Arial"}}>Red Needle = Current speed</h2>
+			<div style={{color:"white"}}>
+			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{showNotification ? notifications :<br></br>}</h2>
+	        </div>
 	        <div className="meter meter--speed">
 
 			<svg  width={size} height={size} className="svg">
