@@ -5,15 +5,18 @@ export const Dashboard = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "100vh",
+  height: "600px",
+  overflow: "hidden",
   position: "relative",
+  width: 385,
+
   "> img": {
     width: 80,
-    position: "fixed",
-    marginBottom: -60,
+    position: "absolute",
+    marginBottom: "-10rem",
   },
   "::before": {
-    position: "fixed",
+    position: "absolute",
     content: `""`,
     top: 0,
     width: "100vw",
@@ -23,13 +26,13 @@ export const Dashboard = styled.div({
     zIndex: 10,
   },
   "::after": {
-    position: "fixed",
+    position: "absolute",
     content: `""`,
-    bottom: 0,
-    height: 100,
+    bottom: -11,
+    height: 110,
     left: -2,
     right: -2,
-    
+    background: "linear-gradient(0deg, #0c0b11 60%, transparent)",
     zIndex: 10,
   },
 });
@@ -42,11 +45,11 @@ export const RoadWrapper = styled.div({
   position: "relative",
   transform: "rotateX(20deg)",
   background: "#4ad9ff0f",
-  height: 800,
+  height: 1253,
 });
 
 export const DashboardWrapper = styled.div({
-  marginTop: "-14rem",
   perspective: 150,
   position: "relative",
+  width: 250,
 });

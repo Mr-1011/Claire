@@ -4,7 +4,7 @@ import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Child } from "../../assets/exports";
-import Speedometer_child from "../speedometer/speedometer_child";
+import Speedometer_child2 from "../speedometer/speedometer_child2";
 import Batterystatus2 from "../speedometer/batterystatus2";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
@@ -94,7 +94,7 @@ function Animation_child() {
           scale: "0.6",
         }}
       >
-        <Speedometer_child
+        <Speedometer_child2
           dataFromParent={{ child: showChild, stop: stopRoad }}
         />
         <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>

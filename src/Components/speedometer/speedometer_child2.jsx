@@ -94,19 +94,11 @@ useEffect(() =>{
 		/*setTimeout(()=>{
 			setSpeed(-0.33);
 			setStart(270);},4000);*/
-		if(audiocounter==0&&showAudio==true){
-			setShowGif(true);
-			setTimeout(() => {
-				setShowGif(false);
-			  }, 7000);
-			play();
-			setTimeout(()=>{
-				setAudiocounter(0)},4000);
-		}
+		
 		
 	}
 	else{
-		play120();
+		
 		setBeta(180);
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
@@ -172,8 +164,8 @@ left: 50%;
         
 
         <div className="dashboard">
-			<h2 style={{color:"green", fontFamily:"Arial"}}>Green Needle = Set speed by Claire</h2>
-			<h2 style={{color:"red", fontFamily:"Arial"}}>Red Needle = Current speed</h2>
+		<h2 style={{color:"#000000", fontFamily:"Arial"}}>q</h2>
+			<h2 style={{color:"#000000", fontFamily:"Arial"}}>q</h2>
 			<div style={{color:"white"}}>
 			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{showNotification ? notifications :<br></br>}</h2>
 	        </div>

@@ -8,7 +8,11 @@ export default function batterystatus() {
         
 
         <div className="dashboard">
-			
+			<Link to="/">
+              <button className='button__next'>
+				Back
+              </button>
+            </Link>
 			
             <h2 style={{color:"green", border:"1px solid green", fontFamily:"Arial", fontSize:40}}>Battery Status: 88% </h2>
 			

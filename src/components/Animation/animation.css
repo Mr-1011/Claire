@@ -1,59 +1,69 @@
-
 .dashboard_wrapper > div {
-    animation: moveroad 500ms linear infinite;
+  animation: moveroad 500ms linear infinite;
+}
+
+.traffic {
+  animation: movetraffic 4s linear;
+}
+.child {
+  animation: movechild 10s linear;
+}
+.button__next {
+  margin: 20px;
+  width: 210px;
+  height: 50px;
+  border-radius: 9px;
+  border: none;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(225deg, #181818, #292d33);
+  box-shadow: -5px 5px 20px #191919,
+    5px -5px 20px #292929;
+}
+
+@keyframes moveroad {
+  0% {
+    transform: translateY(-30px);
   }
 
-  
-  .traffic {
-    animation: movetraffic 4s linear;
+  100% {
+    transform: translateY(-10px);
   }
-  .child{
-    animation: movechild 10s linear;
-  }
-  
-  @keyframes moveroad {
-    0% {
-      transform: translateY(-30px);
-    }
-  
-    100% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  @keyframes movetraffic {
-    0% {
-      left: 26px;
-      top: 4rem;
-    }
-  
-    100% {
-      left: -32px;
-      top: 19rem;
-    }
+}
+
+@keyframes movetraffic {
+  0% {
+    left: 47px;
+    top: 16rem;
   }
 
-  @keyframes movechild {
-    0% {
-      left: 100px;
-      top: 15rem;
-    }
-  
-    100% {
-      left: -32px;
-      top: 19rem;
-    }
+  100% {
+    left: -16px;
+    top: 29rem;
   }
-  .slowroad > div{
-    animation: moveroadslow 500ms linear infinite;
+}
+
+@keyframes movechild {
+  0% {
+    left: 130px;
+    top: 20rem;
   }
-  
-  @keyframes moveroadslow {
-    0% {
-      transform: translateY(-15px);
-    }
-  
-    100% {
-      transform: translateY(-10px);
-    }
+
+  100% {
+    left: -70px;
+    top: 35rem;
   }
+}
+.slowroad > div {
+  animation: moveroadslow 500ms linear infinite;
+}
+
+@keyframes moveroadslow {
+  0% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}

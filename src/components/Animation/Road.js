@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const Road = styled.div({
-  width: 200,
+  width: "100%",
   flex: 1,
   borderLeft: " 1px dashed #00c9ff91",
   borderRight: " 1px dashed #00c9ff91",
@@ -15,7 +15,8 @@ export const Road = styled.div({
 
 export const TrafficWrapper = styled.div({
   img: { width: 50 },
+  img: {height: 80},
   position: "absolute",
-  left: "-32px",
-  top: "19rem",
+  left: "-16px",
+  top: "29rem",
 });

@@ -94,19 +94,11 @@ useEffect(() =>{
 		/*setTimeout(()=>{
 			setSpeed(-0.33);
 			setStart(270);},4000);*/
-		if(audiocounter==0&&showAudio==true){
-			setShowGif(true);
-			setTimeout(() => {
-				setShowGif(false);
-			  }, 7000);
-			play();
-			setTimeout(()=>{
-				setAudiocounter(0)},4000);
-		}
+		
 		
 	}
 	else{
-		play120();
+		
 		setBeta(180);
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
@@ -172,33 +164,14 @@ left: 50%;
         
 
         <div className="dashboard">
-			<h2 style={{color:"green", fontFamily:"Arial"}}>Green Needle = Set speed by Claire</h2>
-			<h2 style={{color:"red", fontFamily:"Arial"}}>Red Needle = Current speed</h2>
+		<h2 style={{color:"#000000", fontFamily:"Arial"}}>q</h2>
+			<h2 style={{color:"#000000", fontFamily:"Arial"}}>q</h2>
 			<div style={{color:"white"}}>
 			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{showNotification ? notifications :<br></br>}</h2>
 	        </div>
 	        <div className="meter meter--speed">
 
-			<svg  width={size} height={size} className="svg">
-				<circle
-				cx={size / 2}
-				cy={size / 2}
-				r={radius}
-				stroke={"#582ced"}
-				strokeWidth={20}
-				fill="transparent"
-				strokeDasharray={circumference}
-				// this attribute is to set the svg start and end
-				strokeDashoffset={strokeDashoffset}
-				style={{
-					transformOrigin: "center",
-					transform: `rotate(${start}deg)`,
-					strokeDashoffset,
-					//animation: `${accelerate} ${animationtime}s linear`,
-					transition: `all ${animationtime}s linear`,
-				}}
-				/>
-      		</svg>
+			
 
 			<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 
@@ -237,11 +210,7 @@ left: 50%;
 				</InfiniteRotate>
 				</div>
 
-				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 				
-					<div className="needle" style={{background:"#00FF00"}}></div>
-				
-				</div>
 			</div>
 			
         </div>
