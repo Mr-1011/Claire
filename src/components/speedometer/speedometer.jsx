@@ -116,7 +116,7 @@ useEffect(() =>{
 			setAnimationtime(0.5);
 			setSpeed(0.33);
 			setStart(150);
-			setAlpha(150);},11500);
+			setAlpha(180);},11500);
 	}
 	if(dataFromParent.dataFromParent.stop==true){
 		setAlpha(60);
