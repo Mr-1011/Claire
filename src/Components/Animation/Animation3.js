@@ -5,7 +5,7 @@ import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
-import Speedometer from "../speedometer/speedometer";
+import Speedometer3 from "../speedometer/speedometer3";
 //import Speedometer from "../testfield/Speedometer";
 import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
@@ -79,7 +79,7 @@ function Animation() {
           scale: "0.6",
         }}
       >
-        <Speedometer
+        <Speedometer3
           dataFromParent={{ traffic: showTraffic, stop: stopRoad }}
         />
         <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>
@@ -119,7 +119,7 @@ function Animation() {
           scale: "0.6",
         }}
       >
-        <Link to="/speedometer_child">
+        <Link to="/speedometer_child3">
               <button className='button__next'>
                 Next
               </button>
