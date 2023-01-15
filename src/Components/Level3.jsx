@@ -49,7 +49,7 @@ useEffect(() => {
             </button>
           </Link>
 
-          <Link to='/speedometer'>
+          <Link to='/speedometer3'>
             <button className='button__next'>
               next
             </button>

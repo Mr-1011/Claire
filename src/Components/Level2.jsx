@@ -52,7 +52,7 @@ play()
             </button>
           </Link>
 
-          <Link to='/speedometer'>
+          <Link to='/speedometer2'>
             <button className='button__next'>
               next
             </button>
