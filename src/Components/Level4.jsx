@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import Interface from './Interface';
 import { useLocation } from 'react-router-dom';
-import MicOffIcon from '@mui/icons-material/MicOff';
+import { VisibilityIcon, SpeedIcon, SensorsIcon} from '@mui/icons-material/SettingsVoice';
 
 
 function Level() {
@@ -18,15 +18,15 @@ useEffect(() => {
     setLevel(1)
     setAssistance("Complete Visual and Audio Assistance")
   }
-  else if (9 < score <= 15 ){
+  if (9 < score <= 15 ){
     setLevel(2)
     setAssistance("Complete Visual and basic Audio Assistance")
   }
-  else if (15 < score <= 21 ){
+  if (15 < score <= 21 ){
     setLevel(3)
     setAssistance("Complete Visual Assistance")
   }
-  else if(21 < score <= 25 ) {
+  if(21 < score <= 25 ) {
     setLevel(4)
     setAssistance("Basic Visual Assistance")
   }
@@ -41,7 +41,8 @@ useEffect(() => {
         
         <Interface>
         <div className = '/question-text'>
-          Hello, your score is {score} out of 25! Claire will support you with assistance Level {level}，with {assistance} explanations.
+          Hello, Claire will support you with assistance Level {level}，with {assistance} explanations. You will receive basic explanations 
+          about the car's actions on the dashboard. Additionally, Claire will ask you to take control in an emergency by vibrating the seat and turning the steering wheel red.
         </div>
           <Link to='/question'>
             <button className='button__next'>
@@ -55,7 +56,9 @@ useEffect(() => {
             </button>
           </Link>
           <div>
-          <MicOffIcon></MicOffIcon>
+          <VisibilityIcon ></VisibilityIcon>
+          <SpeedIcon ></SpeedIcon>
+          <SensorsIcon ></SensorsIcon>
           </div>
         </Interface>
     </div>

@@ -25,7 +25,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 function SingleQuestion() {
   const questions = [
     {
-      questionText: 'How long have you had your license for?',
+      questionText: 'How long have you had your driving license for?',
       answerOptions: [
         { answerText: 'less than 2 years', answerPoints: 0 },
         { answerText: '2-5 years', answerPoints: 3 },
@@ -41,7 +41,7 @@ function SingleQuestion() {
       ],
     },
     {
-      questionText: 'How many times you drive per week?',
+      questionText: 'How often do you drive per week?',
       answerOptions: [
         { answerText: 'less than 2 times', answerPoints: 0 },
         { answerText: '2-5 times', answerPoints: 3 },
@@ -49,15 +49,24 @@ function SingleQuestion() {
       ],
     },
     {
-      questionText: 'Have you already had experience with a AD?',
+      questionText: 'Do you have any perceived risks when driving autonomous cars?',
       answerOptions: [
-        { answerText: 'None or very litte', answerPoints: 0 },
-        { answerText: 'Basic knowledge', answerPoints: 3 },
-        { answerText: 'Advanced knowledge', answerPoints: 5 },
+        { answerText: 'I’m afraid AD has security issues', answerPoints: 0 },
+        { answerText: 'I’m afraid AD might be out of control', answerPoints: 0 },
+        { answerText: 'I’m afraid AD will not give explanation about its decisions', answerPoints: 0 },
+        { answerText: 'I’m afraid bad communications network and other factors might influence driving', answerPoints: 0 },
       ],
     },
     {
-      questionText: 'Do you have any knowledge of AD/DL?',
+      questionText: 'Have you already had experience with the autonomous vehicle?',
+      answerOptions: [
+        { answerText: 'None', answerPoints: 0 },
+        { answerText: 'A little', answerPoints: 3 },
+        { answerText: 'A lot', answerPoints: 5 },
+      ],
+    },
+    {
+      questionText: 'Do you have technical knowledge about autonomous driving?',
       answerOptions: [
         { answerText: 'None or very litte', answerPoints: 0 },
         { answerText: 'Basic knowledge', answerPoints: 3 },
