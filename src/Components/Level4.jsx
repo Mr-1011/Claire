@@ -18,21 +18,19 @@ useEffect(() => {
     setLevel(1)
     setAssistance("Complete Visual and Audio Assistance")
   }
-  else if (9 < score <= 15 ){
+  else if (score > 9 && score <= 15) {
     setLevel(2)
     setAssistance("Complete Visual and basic Audio Assistance")
   }
-  else if (15 < score <= 21 ){
+  else if (score > 15 && score <= 21) {
     setLevel(3)
     setAssistance("Complete Visual Assistance")
   }
-  else if(21 < score <= 25 ) {
+  else if (score > 21 && score <= 25) {
     setLevel(4)
     setAssistance("Basic Visual Assistance")
   }
 });
-
-
 
 
 
@@ -49,7 +47,7 @@ useEffect(() => {
             </button>
           </Link>
 
-          <Link to='/speedometer'>
+          <Link to='/speedometer4'>
             <button className='button__next'>
               next
             </button>

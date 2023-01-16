@@ -17,20 +17,20 @@ function Profile({ score }) {
       setLevel(1)
       setAssistance("Complete Visual and Audio Assistance")
     }
-    else if (9 < score <= 15) {
+    else if (score > 9 && score <= 15) {
       setLevel(2)
       setAssistance("Complete Visual and basic Audio Assistance")
     }
-    else if (15 < score <= 21) {
+    else if (score > 15 && score <= 21) {
       setLevel(3)
       setAssistance("Complete Visual Assistance")
     }
-    else if (21 < score <= 25) {
+    else if (score > 21 && score <= 25) {
       setLevel(4)
       setAssistance("Basic Visual Assistance")
     }
   });
-
+/**git  */
   return (
     <div style={{ display: "flex", margin: "20px 50px 0px 50px", justifyContent: "space-between" }}>
       <div className='morph__div'>
