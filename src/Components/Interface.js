@@ -61,7 +61,7 @@ function Interface({ children }) {
                 <div style={{ width: "90%", margin: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "15px" }}>
                   <Slider
                     defaultValue={50}
-                    sx={{ width: 200, color: "#582CED" }}
+                    sx={{ width: 200, color: "white" }}
                   />
                   <button className='morph__button__round'>
                     AUTO
@@ -80,7 +80,7 @@ function Interface({ children }) {
                   </button>
                   <Slider
                     defaultValue={50}
-                    sx={{ width: 200, color: "#582CED" }}
+                    sx={{ width: 200, color: "white" }}
                   />
                 </div>
               </div>
