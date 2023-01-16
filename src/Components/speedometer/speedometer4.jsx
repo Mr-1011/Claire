@@ -176,9 +176,10 @@ const brake = keyframes`
         <div className="dashboard">
 			
   
-			<h2 style={{color:"#000000", fontFamily:"Arial"}}>q</h2>
-			<h2 style={{color:"#000000", fontFamily:"Arial"}}>q</h2>
-			<h2 style={{color:"#000000", fontFamily:"Arial", fontSize:40}}>q</h2>
+			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
+			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
+			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
+			
 			<div style={{color:"white",}}>
 
 	        </div>
