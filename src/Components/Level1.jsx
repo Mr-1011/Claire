@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import '../App.css';
-import ClaireGif from '../img/Claire.gif'
 import Interface from './Interface';
 import { useLocation } from 'react-router-dom';
 import level1audio from '../Audio/level1.mp3';
+import ClaireGif from '../img/Claire.gif'
 import SpeedIcon from '@mui/icons-material/Speed';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import WaterIcon from '@mui/icons-material/Water';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-
 
 
 function Level() {

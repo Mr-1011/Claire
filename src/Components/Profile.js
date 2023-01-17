@@ -29,8 +29,8 @@ function Profile({ score }) {
       setLevel(4)
       setAssistance("Basic Visual Assistance")
     }
-  });
-/**git  */
+  }, [score]);
+  /**git  */
   return (
     <div style={{ display: "flex", margin: "20px 50px 0px 50px", justifyContent: "space-between" }}>
       <div className='morph__div'>

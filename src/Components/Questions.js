@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import SingleQuestion from './SingleQuestion';
 import Interface from './Interface';
 import '../App.css';

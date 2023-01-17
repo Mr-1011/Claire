@@ -70,13 +70,13 @@ function Interface({ children }) {
                     A/C
                   </button>
                   <button className='morph__button__round'>
-                    <img src={Climate1} />
+                    <img src={Climate1} alt={"Car climate control"} />
                   </button>
                   <button className='morph__button__round'>
-                    <img src={Climate2} />
+                    <img src={Climate2} alt={"Windshield climate"} />
                   </button>
                   <button className='morph__button__round'>
-                    <img src={Climate3} />
+                    <img src={Climate3} alt={"Windshield climate rear"} />
                   </button>
                   <Slider
                     defaultValue={50}
