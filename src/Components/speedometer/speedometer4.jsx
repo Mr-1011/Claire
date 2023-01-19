@@ -171,9 +171,9 @@ const brake = keyframes`
   
 			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
 			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
-			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
+			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{notifications}</h2>
 			
-			<div style={{color:"white",}}>
+			<div style={{color:"white"}}>
 
 	        </div>
 	        <div className="meter meter--speed">
@@ -219,7 +219,11 @@ const brake = keyframes`
 					<div className="needle"></div>
 				</InfiniteRotate>
 				</div>
-
+				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+					
+					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
+				
+				</div>
 				
 			</div>
 			

@@ -84,6 +84,16 @@ useEffect(() =>{
 		//make sure audio is only played once
 		setNotifications("Unpredictable object")
 		setColor("red");
+
+		if(audiocounter==0&&showAudio==true){
+			setShowGif(true);
+			setTimeout(() => {
+				setShowGif(false);
+			  }, 7000);
+			play();
+			setTimeout(()=>{
+				setAudiocounter(0)},4000);
+		}
 		
 		
 	}

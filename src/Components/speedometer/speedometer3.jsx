@@ -173,6 +173,26 @@ const brake = keyframes`
 			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{showNotification ? notifications :<br></br>}</h2>
 	        </div>
 	        <div className="meter meter--speed">
+
+			<svg  width={size} height={size} className="svg">
+				<circle
+				cx={size / 2}
+				cy={size / 2}
+				r={radius}
+				stroke={"#582ced"}
+				strokeWidth={20}
+				fill="transparent"
+				strokeDasharray={circumference}
+				// this attribute is to set the svg start and end
+				strokeDashoffset={strokeDashoffset}
+				style={{
+					transformOrigin: "center",
+					transform: `rotate(${start}deg)`,
+					strokeDashoffset,
+					transition: `all ${animationtime}s linear`,
+				}}
+				/>
+      		</svg>
 				
 			  	
 
@@ -216,6 +236,12 @@ const brake = keyframes`
 				</InfiniteRotate>
 				</div>
 
+				{/*green needle: */}
+				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+					
+					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
+				
+				</div>
 				
 			</div>
 			

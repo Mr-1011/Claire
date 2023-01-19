@@ -135,6 +135,26 @@ left: 50%;
 	        </div>
 	        <div className="meter meter--speed">
 
+			<svg  width={size} height={size} className="svg">
+				<circle
+				cx={size / 2}
+				cy={size / 2}
+				r={radius}
+				stroke={"#582ced"}
+				strokeWidth={20}
+				fill="transparent"
+				strokeDasharray={circumference}
+				// this attribute is to set the svg start and end
+				strokeDashoffset={strokeDashoffset}
+				style={{
+					transformOrigin: "center",
+					transform: `rotate(${start}deg)`,
+					strokeDashoffset,
+					transition: `all ${animationtime}s linear`,
+				}}
+				/>
+      		</svg>
+
 			
 
 			<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
@@ -172,6 +192,13 @@ left: 50%;
 				<InfiniteRotate>
 					<div className="needle"></div>
 				</InfiniteRotate>
+				</div>
+
+				{/*green needle: */}
+				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+					
+					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
+				
 				</div>
 
 				

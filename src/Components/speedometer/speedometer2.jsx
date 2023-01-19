@@ -88,6 +88,15 @@ useEffect(() =>{
 		setNotifications("Red light detected")
 		setColor("red");
 		
+		if(audiocounter==0&&showAudio==true){
+			setShowGif(true);
+			setTimeout(() => {
+				setShowGif(false);
+			  }, 4000);
+			play();
+			setTimeout(()=>{
+				setAudiocounter(0)},4000);
+		}
 		
 	}
 	else{

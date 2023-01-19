@@ -30,6 +30,16 @@ Now go into your favorite browser and enter the URL: http://localhost:3000
 The Claire App will run now in your browser. It can take some minutes until the App is fully loaded. 
 If you have an error starting Claire, it will displayed on your Terminal. It happens when there was a problem in the Installation process. The Terminal will tell you which module is missing and you can install it again. 
 
+# allow Claire to play sound in your browser
+
+To use Claire with the audio assistance, you need to activate Autoplay in your Browser. 
+Here is a description to acriviate Autoplay for the most popular browsers: 
+
+Chrome & Firefox: 
+https://support.zoomforth.com/en/articles/5941839-enable-video-autoplay-in-chrome-and-firefox
+
+Safari: 
+https://www.mlb.com/live-stream-games/help-center/desktop-laptop-how-to-enable-autoplay
 ## Available Scripts
 
 In the project directory, you can run:
