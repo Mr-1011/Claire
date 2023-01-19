@@ -10,7 +10,7 @@ import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
 import { Box, Stack } from "@mui/material";
 
-//code from sirarifarid-fiverr
+
 //showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
 //traffic light apperars after random time, Then car stops after 4 seconds
 function Animation_child() {

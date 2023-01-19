@@ -11,10 +11,11 @@ function Speedometer(dataFromParent){
 
 
 // acceleration can change over time, that's why it is a UseState
-// angles for the needles in the speedometer(alpha = currentspeed)
-// beta is the predicited speed
+// angle for the red needles in the speedometer(alpha = currentspeed)
+// angle beta is the predicited speed (green needle)
 // notifications show the current status and alarms in the dashboard
 // animationtime and audiocounter exist to make the animation more stable
+// other variables define if on a certain level, a component is shown or not
 const [acceleration,setAcceleration] = useState(1.5);
 const [alpha,setAlpha] = useState(60);
 const [beta,setBeta] = useState(180);
@@ -48,6 +49,8 @@ function showlevel(level){
 	}
 }
 
+
+// Audio play functions
 function play(){
 	new Audio(notification).play()
 	setAudiocounter(1);
@@ -57,7 +60,7 @@ function play120(){
 	
 }
 
-//vector graphics
+//vector graphics: purple area between needles is animated and shows direction of predicted speed
 
 const size = 475;
 const strokeWidth = 30;
@@ -66,6 +69,8 @@ const startAngle = 150;
 // basic calculations to add the stroke
 const radius = (size - strokeWidth) / 2;
 const circumference = 2 * Math.PI * radius;
+//strokeDashoffset show how many percent of a circle are displayed,
+// e.g: strokeDashoffset = 0.5 => half circle
 const strokeDashoffset = circumference - (speed) * circumference;
 
 
@@ -73,9 +78,10 @@ const strokeDashoffset = circumference - (speed) * circumference;
 useEffect(() =>{
 	
 	showlevel(level);
+
 	if(dataFromParent.dataFromParent.traffic==true){
-		
-		
+		//if traffic light appears
+		// change speed to 0, animate purple svg
 		setBeta(60);
 		setStart(150);
 		setSpeed(0);
@@ -97,12 +103,14 @@ useEffect(() =>{
 		
 	}
 	else{
+		// car is running on normal road, set speed to 120
 		play120();
 		setBeta(180);
 		setAnimationtime(10);
 		setNotifications("Set speed to 120 km/h")
 		setColor("green");
 		setSpeed(0);
+		// something for purple svg animation
 		setTimeout(()=>{
 			setAnimationtime(0.5);
 			setSpeed(0.33);
@@ -119,9 +127,6 @@ useEffect(() =>{
 			
 	}
 	
-	 // speed = 0 means 0 degree ciricle, speed = 100 means full 360
-  // calculate the progress to show stroke width in simple word
-  //setStrokeDataoffset(circumference - ((beta-alpha)*100/360) * circumference);
 
 },[dataFromParent.dataFromParent.traffic, dataFromParent.dataFromParent.stop])
 
@@ -195,8 +200,6 @@ const brake = keyframes`
 
 				<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 			
-
-				{/* Enter the acceleration half round component here.  */}
 				<div  style={{left: (50 - (50 - 10) * Math.sin(180 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(180 * (Math.PI / 180))) + "%",color:"green"}}></div>
 				
 				<div className="grad" style={{left: (50 - (50 - 10) * Math.sin(60 * (Math.PI / 180))) + "%", top: (50 + (50 - 10) * Math.cos(60 * (Math.PI / 180))) + "%"}}>0</div>
@@ -227,12 +230,13 @@ const brake = keyframes`
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(280 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(300 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (300 + 180) + "deg)"}}></div>
 
+				{/*red needl: first div is the starting angle alpha, The InfiniteRotate moves the red needle towards the green needle*/}
 				<div style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 				<InfiniteRotate>
 					<div className="needle"></div>
 				</InfiniteRotate>
 				</div>
-
+								{/*green needle: */}
 				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 					
 					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>

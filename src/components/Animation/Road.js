@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
+//Animation that the Traffic light or Child appears. Direction and final position can be set in animation.css
+
 export const Road = styled.div({
   width: "100%",
   flex: 1,

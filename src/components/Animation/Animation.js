@@ -11,7 +11,7 @@ import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
 import { Box, Stack } from "@mui/material";
 
-//code from sirarifarid-fiverr
+
 //showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
 //traffic light apperars after 12 seconds, Then car stops after 4 seconds. The car will stay stopped for another 4 seconds
 //then the loop starts again. 
@@ -68,6 +68,7 @@ function Animation() {
       flexDirection={"row"}
       justifyContent={"space-between"}
     >
+      
       <Box
         sx={{
           width: "336px",
@@ -79,6 +80,8 @@ function Animation() {
           scale: "0.6",
         }}
       >
+        {/*show speedometer on left side of dashboard
+        The speedometer handles changes when the traffic light appears or the car stops*/}
         <Speedometer
           dataFromParent={{ traffic: showTraffic, stop: stopRoad }}
         />
@@ -90,6 +93,7 @@ function Animation() {
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
+         {/*show Animation of road scenario in the middle of dashboard*/}
         <Dashboard>
           <img src={Car_Img} />
           <DashboardWrapper>
@@ -119,6 +123,7 @@ function Animation() {
           scale: "0.6",
         }}
       >
+        {/*show other component on the right of dashboard*/}
         <Link to="/speedometer_child">
               <button className='button__next'>
                 Next
