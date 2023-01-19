@@ -2,9 +2,8 @@
 
 Welcome to Claire!
 
-In this Tutorial we show you how to run our Claire App on your computer. s
+In this Tutorial we show you how to run our Claire App on your computer. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Installments
 Open a new Terminal in the Folder, where you have cloned the Claire App from Github. 

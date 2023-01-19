@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
 import Speedometer4 from "../speedometer/speedometer4";
-//import Speedometer from "../testfield/Speedometer";
 import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";

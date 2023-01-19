@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
@@ -9,7 +8,6 @@ import Batterystatus2 from "../speedometer/batterystatus2";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
-import { Link } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
 
 //code from sirarifarid-fiverr

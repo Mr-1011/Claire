@@ -1,21 +1,15 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import "./engine.scss";
-
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification_child from "./notification_child.mp3";
-import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
 import speed120 from "./120.mp3"
 
 function Speedometer(dataFromParent){
 
-// set the start scenario: startspeed and delta t (time horizon predicition)
 
-const startspeed = 100;
-let predicition_horizon = 5;
 
 // acceleration can change over time, that's why it is a UseState
 // angles for the needles in the speedometer(alpha = currentspeed)
@@ -29,7 +23,6 @@ const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
 const [speed,setSpeed] = useState(-0.25);
-const [speed1, setSpeed1] = useState(0);
 const [start, setStart] = useState(270);
 
 const [level, setLevel] = useState(1);
@@ -71,8 +64,6 @@ const startAngle = 150;
 const radius = (size - strokeWidth) / 2;
 const circumference = 2 * Math.PI * radius;
 const strokeDashoffset = circumference - (speed) * circumference;
-console.log(strokeDashoffset)
-//const [strokeDashoffset, setStrokeDataoffset] = useState(circumference - ((180-160)*100/360) * circumference)
 
 
 //the useEffect code is executed when the traffic light appears or the car stops
@@ -80,7 +71,6 @@ useEffect(() =>{
 	
 	showlevel(level);
 	if(dataFromParent.dataFromParent.child==true){
-		
 		
 		setBeta(90);
 		setStart(180);
@@ -91,9 +81,6 @@ useEffect(() =>{
 		setNotifications("Unpredictable object")
 		setColor("red");
 		
-		/*setTimeout(()=>{
-			setSpeed(-0.33);
-			setStart(270);},4000);*/
 		if(audiocounter==0&&showAudio==true){
 			setShowGif(true);
 			setTimeout(() => {
@@ -128,15 +115,6 @@ useEffect(() =>{
 
 },[dataFromParent.dataFromParent.child, dataFromParent.dataFromParent.stop])
 
-
-
-
-//calculate the speed continiously and update the needle
-//speed(t) = startspeed+t*acceleration
-//predicted_speed = speed * Time_horizon* acceleration
-
-
-
 //animation for red needle (current speed)
 const rotate = keyframes`
 to {
@@ -152,21 +130,6 @@ top: 50%;
 left: 50%;
 `
 
-/*
-//animation for predicted speed (green needle)
-const rotate_green = keyframes`
-to {
-  transform: rotate(${(beta+acceleration*predicition_horizon)-beta}deg);
-}
-`
-
-const InfiniteRotateGreen = styled.div`
-animation: ${rotate_green} ${animationtime}s linear infinite;
-position: absolute;
-top: 50%;
-left: 50%;
-`
-*/
     return(
         <div className="engine">
         
@@ -194,7 +157,6 @@ left: 50%;
 					transformOrigin: "center",
 					transform: `rotate(${start}deg)`,
 					strokeDashoffset,
-					//animation: `${accelerate} ${animationtime}s linear`,
 					transition: `all ${animationtime}s linear`,
 				}}
 				/>

@@ -20,25 +20,7 @@ function Animation_child() {
   const [stopRoad, setStopRoad] = useState(false);
   const [iconcolor, seticonColor] = useState("green");
   const [vibration, setVibration] = useState("Off");
-  /*
-  React.useEffect(() => {
-    const showChild = setTimeout(() => {
-      setShowChild(true);
-      seticonColor("red");
-      
-      setTimeout(() => {
-        setStopRoad(true);
-      }, 4000);
-      setTimeout(()=>{
-        setShowChild(false);
-        setStopRoad(false);
-      },10000)
-    }, Math.random() * 4 * 2500);
-    return () => {
-      window.clearTimeout(showChild);
-    };
-  }, []);
-  */
+
   React.useEffect(() => {
     let timers = [];
     const car_running_time = 12000;

@@ -12,10 +12,6 @@ import speed120 from "./120.mp3"
 
 function Speedometer(dataFromParent){
 
-// set the start scenario: startspeed and delta t (time horizon predicition)
-
-const startspeed = 100;
-let predicition_horizon = 5;
 
 // acceleration can change over time, that's why it is a UseState
 // angles for the needles in the speedometer(alpha = currentspeed)
@@ -121,14 +117,6 @@ useEffect(() =>{
 },[dataFromParent.dataFromParent.child, dataFromParent.dataFromParent.stop])
 
 
-
-
-//calculate the speed continiously and update the needle
-//speed(t) = startspeed+t*acceleration
-//predicted_speed = speed * Time_horizon* acceleration
-
-
-
 //animation for red needle (current speed)
 const rotate = keyframes`
 to {
@@ -144,25 +132,9 @@ top: 50%;
 left: 50%;
 `
 
-/*
-//animation for predicted speed (green needle)
-const rotate_green = keyframes`
-to {
-  transform: rotate(${(beta+acceleration*predicition_horizon)-beta}deg);
-}
-`
-
-const InfiniteRotateGreen = styled.div`
-animation: ${rotate_green} ${animationtime}s linear infinite;
-position: absolute;
-top: 50%;
-left: 50%;
-`
-*/
     return(
         <div className="engine">
         
-
         <div className="dashboard">
 		<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
 			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
@@ -171,8 +143,6 @@ left: 50%;
 			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
 	        </div>
 	        <div className="meter meter--speed">
-
-			
 
 			<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 

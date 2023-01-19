@@ -1,22 +1,14 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import "./engine.scss";
-import Pie from "../testfield/pie";
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification from "./notification.mp3";
 import speed120 from "./120.mp3"
-import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
-import { SpeedometerWrapper } from "../testfield/SpeedometerWrapper";
 
 function Speedometer(dataFromParent){
 
-// set the start scenario: startspeed and delta t (time horizon predicition)
-
-const startspeed = 0;
-let predicition_horizon = 5;
 
 // acceleration can change over time, that's why it is a UseState
 // angles for the needles in the speedometer(alpha = currentspeed)
@@ -30,9 +22,7 @@ const [notifications,setNotifications] = useState("Set speed to 120 km/h")
 const [audiocounter, setAudiocounter] = useState(0);
 const [animationtime, setAnimationtime] = useState(10);
 const [speed,setSpeed] = useState(-0.33);
-const [speed1, setSpeed1] = useState(0);
 const [start, setStart] = useState(270);
-
 const [level, setLevel] = useState(0);
 const [showSpeed, setShowSpeed] = useState(true);
 const [showAudio, setShowAudio] = useState(true);
@@ -77,9 +67,6 @@ const startAngle = 150;
 const radius = (size - strokeWidth) / 2;
 const circumference = 2 * Math.PI * radius;
 const strokeDashoffset = circumference - (speed) * circumference;
-console.log(strokeDashoffset)
-//const [strokeDashoffset, setStrokeDataoffset] = useState(circumference - ((180-160)*100/360) * circumference)
-
 
 
 //the useEffect code is executed when the traffic light appears or the car stops
@@ -97,10 +84,7 @@ useEffect(() =>{
 		//make sure audio is only played once
 		setNotifications("Red light detected")
 		setColor("red");
-		
-		/*setTimeout(()=>{
-			setSpeed(-0.33);
-			setStart(270);},4000);*/
+
 		if(audiocounter==0&&showAudio==true){
 			setShowGif(true);
 			setTimeout(() => {
@@ -140,8 +124,6 @@ useEffect(() =>{
   //setStrokeDataoffset(circumference - ((beta-alpha)*100/360) * circumference);
 
 },[dataFromParent.dataFromParent.traffic, dataFromParent.dataFromParent.stop])
-
-
 
 
 
@@ -205,7 +187,6 @@ const brake = keyframes`
 					transformOrigin: "center",
 					transform: `rotate(${start}deg)`,
 					strokeDashoffset,
-					//animation: `${accelerate} ${animationtime}s linear`,
 					transition: `all ${animationtime}s linear`,
 				}}
 				/>

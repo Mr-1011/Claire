@@ -1,22 +1,15 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import "./engine.scss";
-import Pie from "../testfield/pie";
 import { useState, useEffect, AnimationEvent} from "react";
 import styled, { keyframes } from 'styled-components';
 import notification from "./notification.mp3";
 import speed120 from "./120.mp3"
-import Claire from "../Claire";
 import Claire_gif from "../../img/Claire.gif"
 import Claire_jpg from "../../img/claire.jpg";
-import { SpeedometerWrapper } from "../testfield/SpeedometerWrapper";
+
 
 function Speedometer(dataFromParent){
 
-// set the start scenario: startspeed and delta t (time horizon predicition)
-
-const startspeed = 0;
-let predicition_horizon = 5;
 
 // acceleration can change over time, that's why it is a UseState
 // angles for the needles in the speedometer(alpha = currentspeed)
