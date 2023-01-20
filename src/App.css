@@ -26,8 +26,6 @@ footer {
   justify-content: space-around;
 }
 
-
-
 .outter__div {
   position: relative;
   background-color: #000000;
@@ -63,7 +61,6 @@ footer {
   border-radius: 24px;
   font-size: 36px;
 }
-
 
 .morph__div__small {
   width: 370px;
@@ -129,7 +126,6 @@ footer {
     inset 5px -5px 20px #292929;
 }
 
-
 .morph__button {
   width: 360px;
   height: 150px;
@@ -157,7 +153,6 @@ footer {
     inset 5px -5px 20px #292929;
 }
 
-
 .fade-enter {
   opacity: 0;
 }
@@ -175,12 +170,6 @@ footer {
   opacity: 0;
   transition: opacity 1000ms;
 }
-
-
-
-
-
-
 
 .morph__button__round {
   background-image: linear-gradient(-45deg, #383b40, #24272c, #101318);

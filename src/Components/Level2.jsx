@@ -10,6 +10,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import WaterIcon from '@mui/icons-material/Water';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
+// We have a separate component for the four levels. Here the user sees how Claire will support the driver, and icons that summarize the communication channels. An audio file is played explaining the support with an AI voice 
+
 function Level() {
 
   const location = useLocation()

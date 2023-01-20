@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import ClaireGif from '../img/Claire.gif'
 
+// We first indicate that the level is calculated and show the possibility to export the account. This functionality is not yet developed. Therefore, the button changes the text to not yet possible. When the user clicks Next, he will be redirected to the level screen.
+
 function Profile({ score }) {
 
   const [showLogin, setshowLogin] = useState(true);

@@ -14,6 +14,8 @@ import Climate1 from '../img/Climate1.svg';
 import Climate2 from '../img/Climate2.svg';
 import Climate3 from '../img/Climate3.svg';
 
+// in this file we have designed a central car dashboard. As it is a more immersive feeling when you create a personal driver account directly inside your car. We pass the children prop to be position in the empty space in the middle.  
+
 function Interface({ children }) {
   return (
     <div className='outter__div'>

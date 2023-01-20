@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import Profile from './Profile';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 8,
+  height: 6,
   borderRadius: 5,
   width: '1150px',
   margin: 'auto',
@@ -21,6 +21,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
+// The questions, answers and response points are listed here. The points are added up to then determine the level of support required based on predefined thresholds. The progress variable allows us to set the progress on the ProgressBar.
 
 function SingleQuestion() {
   const questions = [
@@ -31,6 +32,7 @@ function SingleQuestion() {
         { answerText: '2-5 years', answerPoints: 3 },
         { answerText: '5 years or more', answerPoints: 5 },
       ],
+      key: 1,
     },
     {
       questionText: 'How many years have you been driving?',
@@ -39,6 +41,7 @@ function SingleQuestion() {
         { answerText: '2-5 years', answerPoints: 3 },
         { answerText: '5 years or more', answerPoints: 5 },
       ],
+      key: 2,
     },
     {
       questionText: 'How often do you drive per week?',
@@ -47,6 +50,7 @@ function SingleQuestion() {
         { answerText: '2-5 times', answerPoints: 3 },
         { answerText: '5 times or more', answerPoints: 5 },
       ],
+      key: 3,
     },
     {
       questionText: 'Have you already had experience with the autonomous vehicle?',
@@ -55,6 +59,7 @@ function SingleQuestion() {
         { answerText: 'Basic knowledge', answerPoints: 3 },
         { answerText: 'Advanced knowledge', answerPoints: 5 },
       ],
+      key: 4,
     },
     {
       questionText: 'Do you have technical knowledge about autonomous driving?',
@@ -63,6 +68,7 @@ function SingleQuestion() {
         { answerText: 'Basic knowledge', answerPoints: 3 },
         { answerText: 'Advanced knowledge', answerPoints: 5 },
       ],
+      key: 5,
     }
   ];
 
@@ -92,7 +98,7 @@ function SingleQuestion() {
             <div className='morph__div__small'>
               {questions[currentQuestion].questionText}
               <div style={{ position: "absolute", bottom: "10px", right: "50%", transform: "translate(50%,0)" }}>
-                <img alt={"..."} src={ClaireGif} style={{ width: "100px", height: "100", borderRadius: "100%" }}></img>
+                <img alt={"Claire"} src={ClaireGif} style={{ width: "100px", height: "100", borderRadius: "100%" }}></img>
               </div>
             </div>
             <div style={{ width: "800px" }}>
