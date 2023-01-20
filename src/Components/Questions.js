@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import SingleQuestion from './SingleQuestion';
 import Interface from './Interface';
 import '../App.css';
 import ClaireGif from '../img/Claire.gif'
+
+// we placed the question to sign in here. We want to develop the functionality to take your personal account with you. Currently the sign in button changes its text to not possible.
 
 function Questions() {
   const [showSection, setshowSection] = useState(true);
@@ -29,6 +30,7 @@ function Questions() {
             </div>
           </div>
         ) : (
+          // here we pass the questions to creata driver profile as a separate component         
           <SingleQuestion />
         )}
       </Interface>

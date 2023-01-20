@@ -19,7 +19,6 @@ function StartButton() {
         </div>
       </button>
     </Link>
-
   )
 }
 
