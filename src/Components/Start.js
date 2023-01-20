@@ -11,15 +11,15 @@ function Start() {
         direction="row"
         justifyContent="flex-start"
         alignItems="center">
-        <Grid item xs>
+        <Grid item xs={7}>
           <div style={{ marginLeft: "50px", marginBottom: "100px" }}>
             <h1>Claire</h1>
-            <p>Welcome to the world's first in-car digital assistant to help you drive autonomously. Claire helps you figure out where and how to communicate driving-relevant information to make you feel safe.</p>
+            <p style={{ fontSize: "20px" }}>Experience the future of autonomous driving with Claire, your ultimate in-car digital assistant. With real-time information and guidance, Claire ensures a safe and enjoyable journey. Don't forget to activate sound for full access to Claire's capabilities.</p>
           </div>
           <StartButton>
           </StartButton>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={5}>
           <Claire />
         </Grid>
       </Grid>

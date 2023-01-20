@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import '../App.css';
-import Interface from './Interface';
-import { useLocation } from 'react-router-dom';
 import ClaireGif from '../img/Claire.gif'
 
 function Profile({ score }) {
 
-  const [showSection, setshowSection] = useState(true);
   const [showLogin, setshowLogin] = useState(true);
-
   const [level, setLevel] = useState(1);
   const [assistance, setAssistance] = useState(true);
+
   useEffect(() => {
     if (score <= 9) {
       setLevel(1)
-      setAssistance("Complete Visual and Audio Assistance")
+      setAssistance("visual assistance and detailed audio explanations. In an emergency, the steering wheel will turn red and the seat will vibrate.")
     }
     else if (score > 9 && score <= 15) {
       setLevel(2)
-      setAssistance("Complete Visual and basic Audio Assistance")
+      setAssistance("visual assistance and basic audio explanations. In an emergency, the steering wheel will turn red and the seats will vibrate.")
     }
     else if (score > 15 && score <= 21) {
       setLevel(3)
-      setAssistance("Complete Visual Assistance")
+      setAssistance("visual assistance. In an emergency, the steering wheel will turn red and the seats will vibrate.")
     }
     else if (score > 21 && score <= 25) {
       setLevel(4)
-      setAssistance("Basic Visual Assistance")
+      setAssistance("with visual assistance.")
     }
   }, [score]);
-  /**git  */
+
   return (
     <div style={{ display: "flex", margin: "20px 50px 0px 50px", justifyContent: "space-between" }}>
       <div className='morph__div'>
@@ -42,8 +39,8 @@ function Profile({ score }) {
         <button className='morph__button' onClick={() => setshowLogin(!showLogin)}>
           {showLogin ? ("Export Account") : ("Not yet possible")}
         </button>
-        <Link to={`/level${level}`} state={{ score: score }}>
-          <button className='morph__button' onClick={() => setshowSection(false)}>
+        <Link to={`/level${level}`} state={{ score: score, assistance: assistance, level: level }}>
+          <button className='morph__button'>
             Continue
           </button>
         </Link>
