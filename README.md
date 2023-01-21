@@ -1,7 +1,45 @@
-# Getting Started with Create React App
+# How to run Claire
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Claire!
 
+In this Tutorial we show you how to run our Claire App on your computer. 
+
+
+# Installments
+Open a new Terminal in the Folder, where you have cloned the Claire App from Github. 
+In the Terminal run the following commands and wait until the installation is done: 
+
+npm i 
+
+npm install @mui/material @emotion/react @emotion/styled
+
+npm i @mui/icons-material
+
+npm i styled-components
+
+npm i react-router-dom
+
+Now you have installed all the necessery modules and you can proceed to the next step: 
+# Start Claire
+
+Open the Terminal again and enter the command: 
+
+npm start
+
+Now go into your favorite browser and enter the URL: http://localhost:3000 
+The Claire App will run now in your browser. It can take some minutes until the App is fully loaded. 
+If you have an error starting Claire, it will displayed on your Terminal. It happens when there was a problem in the Installation process. The Terminal will tell you which module is missing and you can install it again. 
+
+# allow Claire to play sound in your browser
+
+To use Claire with the audio assistance, you need to activate Autoplay in your Browser. 
+Here is a description to acriviate Autoplay for the most popular browsers: 
+
+Chrome & Firefox: 
+https://support.zoomforth.com/en/articles/5941839-enable-video-autoplay-in-chrome-and-firefox
+
+Safari: 
+https://www.mlb.com/live-stream-games/help-center/desktop-laptop-how-to-enable-autoplay
 ## Available Scripts
 
 In the project directory, you can run:

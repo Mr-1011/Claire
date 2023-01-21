@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+
+// Animation for the Road and the moving visualization of the road. 
+// The module styled div was used and the moving is done with a infinite animation
 export const Dashboard = styled.div({
   background: "#0c0b11",
   display: "flex",

@@ -1,19 +1,17 @@
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
 import { Car_Img, Traffic } from "../../assets/exports";
 import Speedometer4 from "../speedometer/speedometer4";
-//import Speedometer from "../testfield/Speedometer";
 import Batterystatus from "../speedometer/batterystatus";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
 import { Box, Stack } from "@mui/material";
 
-//code from sirarifarid-fiverr
+
 //showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
 //traffic light apperars after random time, Then car stops after 4 seconds
 function Animation() {

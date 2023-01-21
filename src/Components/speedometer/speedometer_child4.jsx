@@ -12,10 +12,6 @@ import speed120 from "./120.mp3"
 
 function Speedometer(dataFromParent){
 
-// set the start scenario: startspeed and delta t (time horizon predicition)
-
-const startspeed = 100;
-let predicition_horizon = 5;
 
 // acceleration can change over time, that's why it is a UseState
 // angles for the needles in the speedometer(alpha = currentspeed)
@@ -121,14 +117,6 @@ useEffect(() =>{
 },[dataFromParent.dataFromParent.child, dataFromParent.dataFromParent.stop])
 
 
-
-
-//calculate the speed continiously and update the needle
-//speed(t) = startspeed+t*acceleration
-//predicted_speed = speed * Time_horizon* acceleration
-
-
-
 //animation for red needle (current speed)
 const rotate = keyframes`
 to {
@@ -144,35 +132,17 @@ top: 50%;
 left: 50%;
 `
 
-/*
-//animation for predicted speed (green needle)
-const rotate_green = keyframes`
-to {
-  transform: rotate(${(beta+acceleration*predicition_horizon)-beta}deg);
-}
-`
-
-const InfiniteRotateGreen = styled.div`
-animation: ${rotate_green} ${animationtime}s linear infinite;
-position: absolute;
-top: 50%;
-left: 50%;
-`
-*/
     return(
         <div className="engine">
         
-
         <div className="dashboard">
 		<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
 			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
 			<div style={{color:"white"}}>
 			
-			<h2 style={{color:"#0c0b11", fontFamily:"Arial"}}>q</h2>
+			<h2 style={{color:""+color+"", border:"1px solid "+color+"", fontFamily:"Arial", fontSize:40}}>{notifications}</h2>
 	        </div>
 	        <div className="meter meter--speed">
-
-			
 
 			<img className="dot" alt={"..."} src={showGif ? Claire_gif: Claire_jpg}></img>
 
@@ -201,16 +171,34 @@ left: 50%;
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(200 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(200 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (200 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(220 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(220 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (220 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(240 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(240 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (240 + 180) + "deg)"}}></div>
-				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(260 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (260 + 180) + "deg)"}}></div>
-				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(260 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(260 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (260 + 180) + "deg)"}}></div>
+				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(280 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(280 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (280 + 180) + "deg)"}}></div>
 				<div className="grad-tick" style={{left: (50 - 50 * Math.sin(300 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(300 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (300 + 180) + "deg)"}}></div>
+
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(90 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(90 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (90 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(70 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(70 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (70 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(110 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(110 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (110 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(130 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(130 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (130 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(150 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(150 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (150 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(170 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(170 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (170 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(190 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(190 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (190 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(210 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(210 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (210 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(230 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(230 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (230 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(250 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(250 * (Math.PI / 180))) + "%", transform: "translate3d(-50%, 0, 0) rotate(" + (250 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(270 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(270 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (270 + 180) + "deg)"}}></div>
+				<div className="grad-ticksmall" style={{left: (50 - 50 * Math.sin(290 * (Math.PI / 180))) + "%", top: (50 + 50  * Math.cos(290 * (Math.PI / 180))) + "%",transform: "translate3d(-50%, 0, 0) rotate(" + (290 + 180) + "deg)"}}></div>
 
 				<div style={{transform: "rotate("+alpha+"deg)",position: "absolute",top: "50%",left: "50%"}}>
 				<InfiniteRotate>
 					<div className="needle"></div>
 				</InfiniteRotate>
 				</div>
-
+				{/*green needle: */}
+				<div style={{transform: "rotate("+beta+"deg)",position: "absolute",top: "50%",left: "50%"}}>
+					
+					<div className={showSpeed? "needle":""} style={{background:"#00FF00"}}></div>
+				
+				</div>
 				
 			</div>
 			

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
@@ -9,10 +8,9 @@ import Batterystatus2 from "../speedometer/batterystatus2";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
-import { Link } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
 
-//code from sirarifarid-fiverr
+
 //showTraffic and stopRoad useStates define behavior of animation. (traffic light appears and car stops = road stops)
 //traffic light apperars after random time, Then car stops after 4 seconds
 function Animation_child() {
@@ -20,25 +18,7 @@ function Animation_child() {
   const [stopRoad, setStopRoad] = useState(false);
   const [iconcolor, seticonColor] = useState("green");
   const [vibration, setVibration] = useState("Off");
-  /*
-  React.useEffect(() => {
-    const showChild = setTimeout(() => {
-      setShowChild(true);
-      seticonColor("red");
-      
-      setTimeout(() => {
-        setStopRoad(true);
-      }, 4000);
-      setTimeout(()=>{
-        setShowChild(false);
-        setStopRoad(false);
-      },10000)
-    }, Math.random() * 4 * 2500);
-    return () => {
-      window.clearTimeout(showChild);
-    };
-  }, []);
-  */
+
   React.useEffect(() => {
     let timers = [];
     const car_running_time = 12000;
