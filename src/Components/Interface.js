@@ -14,6 +14,8 @@ import Climate1 from '../img/Climate1.svg';
 import Climate2 from '../img/Climate2.svg';
 import Climate3 from '../img/Climate3.svg';
 
+// in this file we have designed a central car dashboard. As it is a more immersive feeling when you create a personal driver account directly inside your car. We pass the children prop to be position in the empty space in the middle.  
+
 function Interface({ children }) {
   return (
     <div className='outter__div'>
@@ -61,7 +63,7 @@ function Interface({ children }) {
                 <div style={{ width: "90%", margin: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "15px" }}>
                   <Slider
                     defaultValue={50}
-                    sx={{ width: 200, color: "#582CED" }}
+                    sx={{ width: 200, color: "white" }}
                   />
                   <button className='morph__button__round'>
                     AUTO
@@ -70,17 +72,17 @@ function Interface({ children }) {
                     A/C
                   </button>
                   <button className='morph__button__round'>
-                    <img src={Climate1} />
+                    <img src={Climate1} alt={"Car climate control"} />
                   </button>
                   <button className='morph__button__round'>
-                    <img src={Climate2} />
+                    <img src={Climate2} alt={"Windshield climate"} />
                   </button>
                   <button className='morph__button__round'>
-                    <img src={Climate3} />
+                    <img src={Climate3} alt={"Windshield climate rear"} />
                   </button>
                   <Slider
                     defaultValue={50}
-                    sx={{ width: 200, color: "#582CED" }}
+                    sx={{ width: 200, color: "white" }}
                   />
                 </div>
               </div>

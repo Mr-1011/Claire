@@ -1,66 +1,58 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import '../App.css';
 import Interface from './Interface';
 import { useLocation } from 'react-router-dom';
 import level2audio from '../Audio/level2.mp3';
-import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
+import ClaireGif from '../img/Claire.gif'
+import SpeedIcon from '@mui/icons-material/Speed';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import WaterIcon from '@mui/icons-material/Water';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
+// We have a separate component for the four levels. Here the user sees how Claire will support the driver, and icons that summarize the communication channels. An audio file is played explaining the support with an AI voice 
 
 function Level() {
-  
-    const location = useLocation()
-    const { score } = location.state 
 
-const [level, setLevel] = useState(1);
-const [assistance, setAssistance] = useState(true);
-useEffect(() => {
-  if (score <= 9) {
-    setLevel(1)
-    setAssistance("Complete Visual and Audio Assistance")
-  }
-  else if (score > 9 && score <= 15) {
-    setLevel(2)
-    setAssistance("Complete Visual and basic Audio Assistance")
-  }
-  else if (score > 15 && score <= 21) {
-    setLevel(3)
-    setAssistance("Complete Visual Assistance")
-  }
-  else if (score > 21 && score <= 25) {
-    setLevel(4)
-    setAssistance("Basic Visual Assistance")
-  }
-});
-function play(){
-  new Audio(level2audio).play()
-}
-play()
+  const location = useLocation()
+  const { level, assistance } = location.state
 
-
+  function play() {
+    new Audio(level2audio).play()
+  }
+  play()
 
   return (
     <div>
-        
-        <Interface>
-        <div className = '/question-text'>
-          Hello, your score is {score} out of 25! Claire will support you with assistance Level {level}，with {assistance} explanations.
-        </div>
-          <Link to='/question'>
-            <button className='button__next'>
-              back
-            </button>
-          </Link>
-
-          <Link to='/speedometer2'>
-            <button className='button__next'>
-              next
-            </button>
-          </Link>
-          <div>
-          <SettingsVoiceIcon ></SettingsVoiceIcon>
+      <Interface>
+        <div style={{ display: "flex", margin: "20px 50px 0px 50px", justifyContent: "space-between" }}>
+          <div className='morph__div__big'>
+            <div style={{ display: "flex", alignItems: "center", fontSize: "32px", textAlign: "left" }}>
+              <img alt={"..."} src={ClaireGif} style={{ margin: "0px 30px 0px 20px", width: "100px", height: "100px", borderRadius: "100%" }}></img>
+              Claire will support you with assistance Level {level}, with {assistance}
+            </div>
+            <div style={{ display: "flex", marginTop: "40px", justifyContent: "space-around" }}>
+              <div className='morph__div__box'>
+                <SpeedIcon sx={{ fontSize: 70 }} ></SpeedIcon>
+                Speedometer
+              </div>
+              <div className='morph__div__box'>
+                <VisibilityIcon sx={{ fontSize: 70 }} ></VisibilityIcon>
+                Visual
+              </div>
+              <div className='morph__div__box'>
+                <WaterIcon sx={{ fontSize: 70 }} ></WaterIcon>
+                Haptic
+              </div>
+              <Link to='/speedometer' >
+                <div className='morph__button__box'>
+                  <KeyboardDoubleArrowRightIcon sx={{ fontSize: 120, color: "white" }}></KeyboardDoubleArrowRightIcon>
+                </div>
+              </Link>
+            </div>
           </div>
-        </Interface>
+        </div >
+      </Interface>
     </div>
   )
 }
