@@ -68,7 +68,7 @@ function Animation() {
       flexDirection={"row"}
       justifyContent={"space-between"}
     >
-      
+
       <Box
         sx={{
           width: "336px",
@@ -85,7 +85,7 @@ function Animation() {
         <Speedometer
           dataFromParent={{ traffic: showTraffic, stop: stopRoad }}
         />
-        <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>
+        <h2 style={{ color: iconcolor, fontFamily: "Arial" }}>Belt vibration: {vibration}</h2>
         <VibrationOutlinedIcon
           style={{ height: 100, width: 100, color: iconcolor }}
         />
@@ -93,13 +93,13 @@ function Animation() {
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-         {/*show Animation of road scenario in the middle of dashboard*/}
+        {/*show Animation of road scenario in the middle of dashboard*/}
         <Dashboard>
-          <img src={Car_Img} />
+          <img src={Car_Img} alt={"Navigation car"} />
           <DashboardWrapper>
             {showTraffic && (
               <TrafficWrapper className="traffic">
-                <img src={Traffic} />
+                <img src={Traffic} alt={"Navigation traffic"} />
               </TrafficWrapper>
             )}
             <RoadWrapper className={stopRoad ? "" : "dashboard_wrapper"}>
@@ -111,7 +111,7 @@ function Animation() {
           </DashboardWrapper>
         </Dashboard>
       </Box>
-      
+
       <Box
         sx={{
           width: "336px",
@@ -125,15 +125,15 @@ function Animation() {
       >
         {/*show other component on the right of dashboard*/}
         <Link to="/speedometer_child">
-              <button className='button__next'>
-                Next
-              </button>
+          <button className='button__next'>
+            Next
+          </button>
         </Link>
         <Batterystatus />
-        <h2 style={{color:iconcolor}}>Seat vibration: {vibration}</h2>
-        
-        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }}/>
-        
+        <h2 style={{ color: iconcolor }}>Seat vibration: {vibration}</h2>
+
+        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }} />
+
       </Box>
     </Stack>
   );

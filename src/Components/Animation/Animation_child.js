@@ -95,7 +95,7 @@ function Animation_child() {
         <Speedometer_child
           dataFromParent={{ child: showChild, stop: stopRoad }}
         />
-        <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>
+        <h2 style={{ color: iconcolor, fontFamily: "Arial" }}>Belt vibration: {vibration}</h2>
         <VibrationOutlinedIcon
           style={{ height: 100, width: 100, color: iconcolor }}
         />
@@ -104,11 +104,11 @@ function Animation_child() {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Dashboard>
-          <img src={Car_Img} />
+          <img src={Car_Img} alt={"Navigation car"} />
           <DashboardWrapper>
             {showChild && (
               <TrafficWrapper className="child">
-                <img src={Child} />
+                <img src={Child} alt={"Navigation child"} />
               </TrafficWrapper>
             )}
             <RoadWrapper className={stopRoad ? "slowroad" : "dashboard_wrapper"}>
@@ -131,10 +131,10 @@ function Animation_child() {
         }}
       >
         <Batterystatus2 />
-        
-        <h2 style={{color:iconcolor}}>Seat vibration: {vibration}</h2>
-        
-        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }}/>
+
+        <h2 style={{ color: iconcolor }}>Seat vibration: {vibration}</h2>
+
+        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }} />
       </Box>
     </Stack>
   );

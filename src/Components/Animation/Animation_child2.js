@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Grid from "@mui/material/Grid";
 import "./animation.css";
 import { Dashboard, DashboardWrapper, RoadWrapper } from "./Dashboard";
 import { Road, TrafficWrapper } from "./Road";
@@ -9,7 +8,6 @@ import Batterystatus2 from "../speedometer/batterystatus2";
 import React from "react";
 import VibrationOutlinedIcon from "@mui/icons-material/VibrationOutlined";
 import AirlineSeatReclineExtraOutlinedIcon from "@mui/icons-material/AirlineSeatReclineExtraOutlined";
-import { Link } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
 
 //code from sirarifarid-fiverr
@@ -79,7 +77,7 @@ function Animation_child() {
         <Speedometer_child2
           dataFromParent={{ child: showChild, stop: stopRoad }}
         />
-        <h2 style={{color:iconcolor, fontFamily:"Arial"}}>Belt vibration: {vibration}</h2>
+        <h2 style={{ color: iconcolor, fontFamily: "Arial" }}>Belt vibration: {vibration}</h2>
         <VibrationOutlinedIcon
           style={{ height: 100, width: 100, color: iconcolor }}
         />
@@ -88,11 +86,11 @@ function Animation_child() {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Dashboard>
-          <img src={Car_Img} />
+          <img src={Car_Img} alt={"Navigation car"} />
           <DashboardWrapper>
             {showChild && (
               <TrafficWrapper className="child">
-                <img src={Child} />
+                <img src={Child} alt={"Navigation child"} />
               </TrafficWrapper>
             )}
             <RoadWrapper className={stopRoad ? "slowroad" : "dashboard_wrapper"}>
@@ -115,10 +113,10 @@ function Animation_child() {
         }}
       >
         <Batterystatus2 />
-        
-        <h2 style={{color:iconcolor}}>Seat vibration: {vibration}</h2>
-        
-        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }}/>
+
+        <h2 style={{ color: iconcolor }}>Seat vibration: {vibration}</h2>
+
+        <AirlineSeatReclineExtraOutlinedIcon style={{ height: 100, width: 100, color: iconcolor }} />
       </Box>
     </Stack>
   );

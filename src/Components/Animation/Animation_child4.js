@@ -77,17 +77,17 @@ function Animation_child() {
         <Speedometer_child4
           dataFromParent={{ child: showChild, stop: stopRoad }}
         />
-        
+
       </Box>
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Dashboard>
-          <img src={Car_Img} />
+          <img src={Car_Img} alt={"Navigation car"} />
           <DashboardWrapper>
             {showChild && (
               <TrafficWrapper className="child">
-                <img src={Child} />
+                <img src={Child} alt={"Navigation child"} />
               </TrafficWrapper>
             )}
             <RoadWrapper className={stopRoad ? "slowroad" : "dashboard_wrapper"}>
@@ -110,8 +110,8 @@ function Animation_child() {
         }}
       >
         <Batterystatus2 />
-        
-        
+
+
       </Box>
     </Stack>
   );

@@ -39,15 +39,16 @@ $label-color: $grad-color;
 
 * {
 	box-sizing: border-box;
-//	transition: all 0.2s ease-in-out;
+	//	transition: all 0.2s ease-in-out;
 }
 
 .dashboard {
 	display: inline-block;
 	padding: 2rem;
-//	background: #;
+	//	background: #;
 	font-family: 'Coda', cursive;
 }
+
 .dot {
 	border-radius: 100%;
 	position: absolute;
@@ -55,13 +56,12 @@ $label-color: $grad-color;
 	left: 33%;
 	height: 10rem;
 	width: 10rem;
-	border-color:#FFFFFF;
+	border-color: #FFFFFF;
 	background-color: #FFFFFF;
 	display: inline-block;
 	align-items: center;
-	overflow: visible;
-	z-index:1;
-  }
+	z-index: 1;
+}
 
 .meter {
 	display: inline-block;
@@ -70,10 +70,10 @@ $label-color: $grad-color;
 	height: 30rem;
 	background-color: $meter-bg-color;
 	border-radius: 50%;
-//	border: 4px solid black;
+	//	border: 4px solid black;
 	margin: 0 0.5rem;
 
-	
+
 	&:before {
 		content: "";
 		display: block;
@@ -85,7 +85,7 @@ $label-color: $grad-color;
 		border-radius: 50%;
 		background: $ring-color;
 		z-index: -1;
-		
+
 	}
 }
 
@@ -99,7 +99,7 @@ $label-color: $grad-color;
 	&.label-value {
 		color: $needle-axle-color;
 	}
-	
+
 	span {
 		text-transform: uppercase;
 	}
@@ -107,9 +107,9 @@ $label-color: $grad-color;
 
 .label-unit {
 	top: 82.5%;
-	
+
 	div {
-		
+
 		font-size: 1rem;
 
 		.meter--big-label & {
@@ -121,26 +121,27 @@ $label-color: $grad-color;
 .label-value {
 	top: 50%;
 	line-height: 1.25;
-	
-	div, span {
+
+	div,
+	span {
 		font-size: 0;
 
 		.meter--big-label & {
 			font-size: 2.5rem;
 		}
 	}
-	
+
 	div {
 		font-family: 'Roboto Mono', monospace;
 		font-style: italic;
 	}
-	
+
 	span {
 		.meter--big-label & {
 			font-size: 1rem;
 		}
 	}
-	
+
 	span {
 		display: block;
 		position: absolute;
@@ -150,14 +151,14 @@ $label-color: $grad-color;
 }
 
 .needle,
-.needle-axle {
-	
-}
-.InfiniteRotate{
+.needle-axle {}
+
+.InfiniteRotate {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 }
+
 .needle {
 	position: absolute;
 	top: 50%;
@@ -169,7 +170,7 @@ $label-color: $grad-color;
 	transform-origin: 50% 0;
 	background-color: $needle-color;
 	z-index: -1;
-	
+
 
 	&:before,
 	&:after {
@@ -180,19 +181,20 @@ $label-color: $grad-color;
 		height: 0;
 		border-style: solid;
 	}
-	
+
 	&:before {
 		left: -$needle-side-width;
 		border-width: 0 $needle-side-width $needle-height 0;
 		border-color: transparent lighten($needle-color, $needle-shading * 2) transparent transparent;
 	}
-	
+
 	&:after {
 		right: -$needle-side-width;
 		border-width: $needle-height $needle-side-width 0 0;
 		border-color: darken($needle-color, $needle-shading) transparent transparent transparent;
 	}
 }
+
 .needle1 {
 	position: absolute;
 	top: 50%;
@@ -203,8 +205,8 @@ $label-color: $grad-color;
 	transform: translate3d(-50%, 0, 0);
 	transform-origin: 50% 0;
 	background-color: $needle-color;
-	
-	
+
+
 
 	&:before,
 	&:after {
@@ -215,13 +217,13 @@ $label-color: $grad-color;
 		height: 0;
 		border-style: solid;
 	}
-	
+
 	&:before {
 		left: -$needle-side-width;
 		border-width: 0 $needle-side-width $needle-height 0;
 		border-color: transparent lighten($needle-color, $needle-shading * 2) transparent transparent;
 	}
-	
+
 	&:after {
 		right: -$needle-side-width;
 		border-width: $needle-height $needle-side-width 0 0;
@@ -240,13 +242,13 @@ $label-color: $grad-color;
 	border-radius: 50%;
 	background-color: $needle-axle-bg-color;
 	color: $needle-axle-color;
-	
+
 	cursor: pointer;
-	
+
 	&:hover {
 		background-color: darken($needle-axle-bg-color, 20%);
 	}
-	
+
 	.meter--big-label & {
 		width: $needle-axle-size-big;
 		height: $needle-axle-size-big;
@@ -261,7 +263,7 @@ $label-color: $grad-color;
 	color: $grad-color;
 	transform: translate3d(-50%, -50%, 0);
 	font-weight: bold;
-	
+
 	&.redzone {
 		color: $needle-color;
 	}
@@ -289,6 +291,7 @@ $label-color: $grad-color;
 	transform-origin: 50% 0;
 	background-color: $tick-color;
 }
+
 .grad-ticksmall {
 	position: absolute;
 	display: block;
@@ -318,7 +321,7 @@ $label-color: $grad-color;
 	margin: 0;
 	margin-left: -2rem;
 	margin-right: -2rem;
-	
+
 
 	&:before {
 		width: 100% + $ring-size * 4 * 2;
@@ -357,7 +360,7 @@ $label-color: $grad-color;
 	color: white;
 	padding: 2rem;
 	text-transform: uppercase;
-	
+
 	&.active {
 		display: inline-block;
 	}
@@ -377,7 +380,7 @@ $label-color: $grad-color;
 	border: 4px solid;
 	font-size: 1.5rem;
 	font-weight: bold;
-	
+
 	&.active {
 		color: tomato;
 		border-color: tomato;
@@ -408,10 +411,11 @@ body {
 
 h1 {
 	margin: 0;
-//	font-family: 'Roboto Mono', monospace;
+	//	font-family: 'Roboto Mono', monospace;
 	font-weight: normal;
 	text-transform: uppercase;
 }
+
 .button__next {
 	margin: 20px;
 	width: 210px;
@@ -422,5 +426,5 @@ h1 {
 	color: white;
 	background: linear-gradient(225deg, #181818, #292d33);
 	box-shadow: -5px 5px 20px #191919,
-	  5px -5px 20px #292929;
-  }
+		5px -5px 20px #292929;
+}
