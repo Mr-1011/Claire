@@ -34,7 +34,7 @@ function Level() {
                 <VisibilityIcon sx={{ fontSize: 70 }} ></VisibilityIcon>
                 Visual
               </div>
-              <Link to='/speedometer' >
+              <Link to='/speedometer4' >
                 <div className='morph__button__box'>
                   <KeyboardDoubleArrowRightIcon sx={{ fontSize: 120, color: "white" }}></KeyboardDoubleArrowRightIcon>
                 </div>
