@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/68402301/214059516-3278ad9a-ed63-4558-9246-1857d23a2445.png)
+![image](https://user-images.githubusercontent.com/68402301/214138947-c73cc69c-3694-4268-ae45-359902e67cde.png)
 
 
 Welcome to Claire! Experience the future of autonomous driving with Claire, your ultimate in-car digital assistant. With real-time information and guidance, Claire ensures a safe and enjoyable journey. 
@@ -21,24 +21,24 @@ Audio feedback  |In the form of audio announcemends which expalins the car's cur
 Haptic feedback  |In emergencies, Clare turns the steering wheel red and vibrates the seats to ask the driver to take control.
 
 ## Outlook
-<img width="1028" alt="image" src="https://user-images.githubusercontent.com/68402301/214078259-38a76d06-e5e8-4109-88fe-261f4c7e161a.png">
+![image](https://user-images.githubusercontent.com/68402301/214139053-07c05f03-239a-4d2e-9d46-3c326bafda87.png)
 
 This is our login page where drivers can sign in or create a new profile.
 
 
 
-<img width="928" alt="image" src="https://user-images.githubusercontent.com/68402301/214078849-08185d1b-4731-49ca-9e2e-5bb1476b76c8.png">
-<img width="928" alt="image" src="https://user-images.githubusercontent.com/68402301/214078950-d9d56f72-bf45-422a-a9a8-c91a3729f369.png">
-<img width="933" alt="image" src="https://user-images.githubusercontent.com/68402301/214079048-20037633-4761-4c46-ac38-06bae7d4d919.png">
+![image](https://user-images.githubusercontent.com/68402301/214139195-ffc56af8-289c-49a2-af4c-7c21bc0854f0.png)
+![image](https://user-images.githubusercontent.com/68402301/214139239-0a1dbedd-7ee5-4ac6-927f-d035c4595f90.png)
 
 Next, Clare will ask you a series of questions related to the driving experience, questions about autonomous vehicles, etc. to give
 you personalized assistance.
 
-<img width="896" alt="image" src="https://user-images.githubusercontent.com/68402301/214080235-c1d3988e-cd07-4200-94d1-bd0b76aabf53.png">
+![image](https://user-images.githubusercontent.com/68402301/214139355-755cb8cb-b6e8-49ae-85d7-b47ad3d010a7.png)
 
 Based on your answers, Claire offers you customized support on 4 different levels.
 
-<img width="814" alt="image" src="https://user-images.githubusercontent.com/68402301/214080672-d603d32f-0f82-428a-a954-da6166cdd0e9.png">
+![image](https://user-images.githubusercontent.com/68402301/214139421-b91211b8-b679-4d6c-aea8-e67eba6d590d.png)
+
 Next, Claire provides you with visual assistance with the speedometer, which shows the car's current and upcoming actions.
 
 # Setup
