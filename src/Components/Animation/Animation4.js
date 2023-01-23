@@ -85,11 +85,11 @@ function Animation() {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Dashboard>
-          <img src={Car_Img} />
+          <img src={Car_Img} alt={"Navigation car"} />
           <DashboardWrapper>
             {showTraffic && (
               <TrafficWrapper className="traffic">
-                <img src={Traffic} />
+                <img src={Traffic} alt={"Navigation traffic"} />
               </TrafficWrapper>
             )}
             <RoadWrapper className={stopRoad ? "" : "dashboard_wrapper"}>
@@ -101,7 +101,7 @@ function Animation() {
           </DashboardWrapper>
         </Dashboard>
       </Box>
-      
+
       <Box
         sx={{
           width: "336px",
@@ -114,9 +114,9 @@ function Animation() {
         }}
       >
         <Link to="/speedometer_child4">
-              <button className='button__next'>
-                Next
-              </button>
+          <button className='button__next'>
+            Next
+          </button>
         </Link>
         <Batterystatus />
       </Box>

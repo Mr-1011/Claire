@@ -1,13 +1,15 @@
-.dashboard_wrapper > div {
+.dashboard_wrapper>div {
   animation: moveroad 500ms linear infinite;
 }
 
 .traffic {
   animation: movetraffic 4s linear;
 }
+
 .child {
   animation: movechild 10s linear;
 }
+
 .button__next {
   margin: 20px;
   width: 210px;
@@ -56,7 +58,8 @@
     top: 35rem;
   }
 }
-.slowroad > div {
+
+.slowroad>div {
   animation: moveroadslow 500ms linear infinite;
 }
 

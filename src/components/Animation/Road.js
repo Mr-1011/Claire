@@ -17,7 +17,7 @@ export const Road = styled.div({
 
 export const TrafficWrapper = styled.div({
   img: { width: 50 },
-  img: {height: 80},
+  img: { height: 80 },
   position: "absolute",
   left: "-16px",
   top: "29rem",
