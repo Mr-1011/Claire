@@ -40,7 +40,7 @@ function Level() {
                 <WaterIcon sx={{ fontSize: 70 }} ></WaterIcon>
                 Haptic
               </div>
-              <Link to='/speedometer' >
+              <Link to='/speedometer3' >
                 <div className='morph__button__box'>
                   <KeyboardDoubleArrowRightIcon sx={{ fontSize: 120, color: "white" }}></KeyboardDoubleArrowRightIcon>
                 </div>
