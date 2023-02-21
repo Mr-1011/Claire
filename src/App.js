@@ -42,7 +42,7 @@ function App() {
             <Animation3 />
           } />
           <Route path='/speedometer4' element={
-            <Animation4 />
+            <Animation5 />
           } />
           <Route path='/speedometer_child' element={
             <Animation_child />
